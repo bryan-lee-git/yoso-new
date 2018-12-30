@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import WasteItem from '../../components/WasteItem';
 
 class Waste extends Component {
   render() {
     return (
       <div>
-        Welcome to Waste
+        <WasteItem />
       </div>
     );
   }
