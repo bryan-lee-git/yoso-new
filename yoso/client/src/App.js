@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import {BrowserRouter as Router, Route} from "react-router-dom"
 import Nav from './components/Nav';
+import Home from './pages/Home';
 import Login from './pages/Login';
 import MyLists from './pages/MyLists';
 import Pantry from './pages/Pantry';
-import PersonalList from './pages/PersonalList';
+import Recipes from './pages/Recipes';
 import Waste from './pages/Waste';
 
-import './App.css';
+import './Yoso.css';
 
 class App extends Component {
   render() {
@@ -16,10 +17,11 @@ class App extends Component {
         <Router>
           <div>
             <header>
-              <Nav />
+              <Nav className="main-nav" />
             </header>
 
             <main>
+<<<<<<< HEAD
               <div className="container">
                 <Route exact path="/" component={Login} />
                 <Route exact path="/MyLists" component={MyLists} />
@@ -28,6 +30,14 @@ class App extends Component {
                 <Route exact path="/PersonalList" component={PersonalList} />
                 <Route exact path="/Waste" component={Waste} />
               </div>
+=======
+              <Route exact path="/" component={Home} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/lists" component={MyLists} />
+              <Route exact path="/pantry" component={Pantry} />
+              <Route exact path="/recipes" component={Recipes} />
+              <Route exact path="/waste" component={Waste} />
+>>>>>>> bryan
             </main>
 
             <footer>
