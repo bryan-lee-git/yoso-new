@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import ListItem from '../../components/ListItem'
 
 class PersonalList extends Component {
   render() {
     return (
       <div>
-        Welcome to PersonalList
+        <ListItem />
       </div>
     );
   }
