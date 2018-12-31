@@ -88,6 +88,14 @@ footer.page-footer {
             animation: fadein 2s forwards;
 }
 
+.footer-link {
+    color: white;
+}
+
+.footer-link:hover {
+    color: #00BF0D;
+}
+
 #home-list, #home-pantry, #home-waste, #home-recipes, #home-logout, #home-account, #home-login, #home-signup, #signup-form, #home-learn, #signin-form, #what-card, #why-card, #dev-card, #account-form {
     background-repeat: no-repeat;
     background-position: center;

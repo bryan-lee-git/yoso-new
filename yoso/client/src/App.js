@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import {BrowserRouter as Router, Route, Redirect} from "react-router-dom"
+import {BrowserRouter as Router, Route, Redirect, Link } from "react-router-dom"
 import Nav from './components/Nav';
-import { Footer } from 'react-materialize';
+import { Footer, Col } from 'react-materialize';
 import Landing from './pages/Landing';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
@@ -130,8 +130,14 @@ class App extends Component {
               <PrivateRoute exact path="/waste" component={Waste} />
               <PrivateRoute exact path="/account" component={Account} />
             </main>
-            <footer>
-              <Footer/>
+            <footer className="page-footer">
+              <div class="container"></div>
+              <div class="footer-copyright">
+                <div class="container">
+                  <span>COPYRIGHT 2018 © PANDA WARRIORS DG</span>
+                  <span className="right"><Link className="footer-link" to="/about">ABOUT</Link> | <Link className="footer-link" to="/tech">TECH</Link> | <Link className="footer-link" to="/contact">CONTACT</Link> | <Link className="footer-link" to="/tandc">TERMS AND CONDITIONS</Link></span>
+                </div>
+              </div>
             </footer>
           </div>
         </MyContext.Provider>
