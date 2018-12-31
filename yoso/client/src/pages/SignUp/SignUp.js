@@ -28,8 +28,10 @@ class SignUp extends Component {
 
   render() {
 
-    if(this.state.redirect){
-      return <Redirect to={`/home`} />
+    if (this.state.redirect) {
+      return (
+        <Redirect to={`/home`} />
+      )
     }
 
     return (
@@ -37,9 +39,7 @@ class SignUp extends Component {
         <Container>
           <Row>
             <Col s={12}>
-              <br/>
-              <h1 className="white-text">CREATE AN ACCOUNT</h1>
-              <br/>
+              <h1 className="white-text fade-in">CREATE AN ACCOUNT</h1>
             </Col>
           </Row>
           <form>
@@ -68,8 +68,8 @@ class SignUp extends Component {
               </Row>
               <Row>
               {this.state.first && this.state.last && this.state.street && this.state.city && this.state.state && this.state.zip && this.state.email && this.state.password
-                ? <Col s={12}><Input s={12} onClick={this.handleSignUp} className="btn btn-large" type="submit"></Input></Col> 
-                : <Col s={12}><Input s={12} onClick={this.handleSignUp} className="btn btn-large" type="submit" disabled></Input></Col>
+                ? <Col s={12}><Input s={12} onClick={this.handleSignUp} className="signup-btn btn btn-large" type="submit"></Input></Col> 
+                : <Col s={12}><Input s={12} onClick={this.handleSignUp} className="signup-btn btn btn-large" type="submit" disabled></Input></Col>
               }
               </Row>
             </Card>  

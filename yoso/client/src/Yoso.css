@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Hind+Vadodara');
+
 body {
     width: 100%;
     background-color: #00BF0D;
@@ -5,10 +7,16 @@ body {
     background-attachment: fixed;
     background-position: center;
     background-size: 10%;
+    font-family: 'Hind Vadodara', sans-serif;
 }
 
 #main-nav {
     background-color: #007F09;
+}
+
+h1 {
+    text-shadow: 1px 1px 1px #007F09;
+    font-size: 80px;
 }
 
 a.brand-logo {
@@ -63,20 +71,24 @@ footer.page-footer {
     width: 70%;
 }
 
+.signin-btn, .signup-btn {
+    width: 100%;
+}
+
 .btn:hover {
     background-color: #00BF0D;
     transform: scale(1.04)
 }
 
-#home-logo {
-    -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
-       -moz-animation: fadein 2s; /* Firefox < 16 */
-        -ms-animation: fadein 2s; /* Internet Explorer */
-         -o-animation: fadein 2s; /* Opera < 12.1 */
-            animation: fadein 2s;
+#home-logo, .fade-in {
+    -webkit-animation: fadein 2s forwards; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadein 2s forwards; /* Firefox < 16 */
+        -ms-animation: fadein 2s forwards; /* Internet Explorer */
+         -o-animation: fadein 2s forwards; /* Opera < 12.1 */
+            animation: fadein 2s forwards;
 }
 
-#home-list, #home-pantry, #home-waste, #home-recipes, #home-logout, #home-account, #home-login, #home-signup, #signup-form, #home-learn {
+#home-list, #home-pantry, #home-waste, #home-recipes, #home-logout, #home-account, #home-login, #home-signup, #signup-form, #home-learn, #signin-form, #what-card, #why-card, #dev-card, #account-form {
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -111,12 +123,24 @@ footer.page-footer {
     background-image: url("/img/baseline-create-24px.svg");
 }
 
-#signup-form {
+#signup-form, #signin-form, #account-form {
     background-image: url("/img/baseline-account_circle-24px-green.svg");
 }
 
 #home-learn {
     background-image: url("/img/baseline-restaurant-24px.svg");
+}
+
+#what-card {
+    background-image: url("/img/question-mark.svg");
+}
+
+#why-card {
+    background-image: url("/img/exclamation-point.svg");
+}
+
+#dev-card {
+    background-image: url("/img/developers.svg");
 }
 
 @keyframes fadein {

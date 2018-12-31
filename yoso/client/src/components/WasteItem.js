@@ -1,5 +1,5 @@
 import React from 'react';
-import {Col, Card, Row, List} from 'react-materialize';
+import { Col, Card, Row } from 'react-materialize';
 
 const WasteItem = () => {
   return (

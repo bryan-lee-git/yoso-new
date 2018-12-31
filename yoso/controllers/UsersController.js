@@ -18,12 +18,26 @@ module.exports = {
             });
     },
     update: function (req, res) {
-        db.User
-            .findOneAndUpdate({
-                _id: req.params.id
-            }, req.body)
-            .then(dbModel => res.json(dbModel))
-            .catch(err => res.status(422).json(err));
+        db.User.update(
+            {
+                first: req.body.first,
+                last: req.body.last, 
+                email: req.body.email,
+                password: req.body.password,
+                street: req.body.street,
+                city: req.body.city,
+                state: req.body.state,
+                zip: req.body.zip
+            }, {
+                where: {
+                    email: req.params.id
+                }
+            }
+        ).then(dbModel => res.json(dbModel))
+        .catch(err => {
+            res.status(422).json(err);
+            console.log(err);
+        })
     },
     remove: function (req, res) {
         db.User
