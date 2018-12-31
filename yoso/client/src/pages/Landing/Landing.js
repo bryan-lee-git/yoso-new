@@ -42,18 +42,18 @@ class Landing extends Component {
                 {/* LOGO ROW */}
                 <Row>
                     <br/>
-                    <Col s={6} offset="s3">
+                    <Col s={12} l={6} offset="l3">
                         <img id="home-logo" alt="yoso logo" src="./img/Yoso-Logo-Large-Text-White-Tag-Shadow.svg"></img>            
                     </Col>
                 </Row>
                 {/* LANDING BUTTON ROW */}
                 <Row className="animate-up">
-                    <Col s={12} m={4}>
-                        <Link to="/about"><Button id="home-learn" className="home-btn z-depth-5 btn-large">ABOUT YOSO</Button></Link>
+                    <Col s={6}l={4}>
+                        <Link to="/about"><Button id="home-learn" className="home-btn z-depth-5 btn-large">YOSO?</Button></Link>
                     </Col>
                     {/* LOGIN MODAL */}
                     <Modal className="modal" header='Enter Your Credentials to Login!' bottomSheet trigger={
-                        <Col s={12} m={4}>
+                        <Col s={6} l={4}>
                             <Button onClick={this.handleModal} id="home-login" className="home-btn z-depth-5 btn-large">LOGIN</Button>
                         </Col>
                     }>
@@ -70,7 +70,7 @@ class Landing extends Component {
                             </Col>
                         }
                     </Modal>
-                    <Col s={12} m={4}><Link to="/signup">
+                    <Col s={12} l={4}><Link to="/signup">
                         <Button id="home-signup" className="home-btn z-depth-5 btn-large">SIGN-UP</Button></Link>
                     </Col>
                 </Row>

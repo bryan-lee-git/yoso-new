@@ -44,7 +44,8 @@ class App extends Component {
     const hash = bcrypt.hashSync(password, salt);
     axios.post('/login', { first, last, username, email, password: hash, street, city, state, zip }).then(response => {
       if(response.data) {
-        this.setState({ email, loggedIn: true })
+        yosoAuth.authenticate();
+        this.setState({ name: first, email, loggedIn: true })
         if (cb) cb()
       } else console.log("Could not sign up! Please try again.");
     }).catch(err => {
@@ -80,7 +81,7 @@ class App extends Component {
             <Nav className="main-nav" loggedIn={this.state.loggedIn} />
           </header>
           <main>
-          <Route exact path="/" render={() => {
+            <Route exact path="/" render={() => {
               return (
                 <Landing loggedIn={this.state.loggedIn} signIn={this.handleSignIn}/>
               )

@@ -1,7 +1,7 @@
 body {
+    width: 100%;
     background-color: #00BF0D;
     background-image: url(/img/groceries-background-pattern.svg);
-    /* background-repeat: no-repeat; */
     background-attachment: fixed;
     background-position: center;
     background-size: 10%;
@@ -41,6 +41,7 @@ footer.page-footer {
 
 .animate-up {
     animation: fadeInUp-radium-animation-97401d6b 1s ease 0s 1 normal none running; 
+    margin-bottom: 100px;
 }
 
 @keyframes fadeInUp-radium-animation-97401d6b {
@@ -68,7 +69,6 @@ footer.page-footer {
 }
 
 #home-logo {
-    width: 100%;
     -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
        -moz-animation: fadein 2s; /* Firefox < 16 */
         -ms-animation: fadein 2s; /* Internet Explorer */
