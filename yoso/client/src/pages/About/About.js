@@ -10,24 +10,24 @@ const About = () => {
                     <img id="home-logo" alt="yoso logo" src="./img/Yoso-Logo-Large-Text-White-Tag-Shadow.svg"></img>            
                 </Col>
             </Row>
-            <Row className="animate-up">
-                <Col s={12} m={12} l={4}>
-                    <Card className="about-card" id="what-card">
+            <Row className="btn-row">
+                <Col className="animate-up" s={12} m={12} l={4}>
+                    <Card className="z-depth-4 about-card" id="what-card">
                         <h4>What?</h4>
                         <p>
                             Its a smart grocery shopping assistant that...
                             <br/><br/>
-                            Helps you quickly create, store, and share your grocery lists and even helps sort and view by store/location.
+                            Helps you quickly create, store, and share your grocery lists and sort by store.
                             <br/><br/>
-                            Learns and proactively adds items to your list based upon when you last shopped and how long items typically last you.
+                            Learns and proactively adds items to your list based upon when you last shopped and how long items last.
                             <br/><br/>
-                            Keeps track of when your food will likely expire to help you use the food you already have and reduce waste.
+                            Keeps track of expiration dates to help you use the food you already have and reduce waste.
                         </p>
                         <br/>
                     </Card>
                 </Col>
-                <Col s={12} m={12} l={4}>
-                    <Card className="about-card" id="why-card">
+                <Col className="animate-up-2" s={12} m={12} l={4}>
+                    <Card className="z-depth-4 about-card" id="why-card">
                         <h4>Why?</h4>
                         <p>Ever had a craving, gone to your fridge to fix yourself a nice meal, and then realized that the ingredients you needed had expired?
                         <br/><br/>
@@ -37,11 +37,10 @@ const About = () => {
                         <br/><br/>
                         We have. <strong>That's why.</strong>
                         </p>
-                        <br/>
                     </Card>
                 </Col>
-                <Col s={12} m={12} l={4}>
-                    <Card className="about-card" id="dev-card">
+                <Col className="animate-up-3" s={12} m={12} l={4}>
+                    <Card className="z-depth-4 about-card" id="dev-card">
                         <h4>Who?</h4>
                         <Row>
                             <Col s={12}>
@@ -77,7 +76,6 @@ const About = () => {
                                 <img alt="github logo" width="49px" src="./img/github.png"></img>
                             </Col>
                         </Row>
-                        <br/>
                     </Card>
                 </Col>
             </Row>

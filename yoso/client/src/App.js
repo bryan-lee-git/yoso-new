@@ -105,7 +105,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <MyContext.Provider className="container-fluid" value={{state: this.state, accountUpdate: this.handleAccountUpdate}}>
+        <MyContext.Provider className="container-fluid" value={{state: this.state, accountUpdate: this.handleAccountUpdate, logOut: this.handleLogOut}}>
           <div>
             <header>
               <Nav className="main-nav" loggedIn={this.state.loggedIn} logOut={this.handleLogOut} />
@@ -133,7 +133,7 @@ class App extends Component {
             <footer className="page-footer">
               <div class="container"></div>
               <div class="footer-copyright">
-                <div class="container">
+                <div class="container hide-on-med-and-down">
                   <span>COPYRIGHT 2018 © PANDA WARRIORS DG</span>
                   <span className="right"><Link className="footer-link" to="/about">ABOUT</Link> | <Link className="footer-link" to="/tech">TECH</Link> | <Link className="footer-link" to="/contact">CONTACT</Link> | <Link className="footer-link" to="/tandc">TERMS AND CONDITIONS</Link></span>
                 </div>

@@ -6,17 +6,17 @@ import { Container, Row, Col } from "react-materialize";
 class MyLists extends Component {
   render() {
     return (
-      <Container className="center-align">
+      <div className="center-align">
         <Row>
           <Col s={12}>
             <h1 className="white-text fade-in">YOUR LISTS</h1>
           </Col>
         </Row>
-        <div className="animate-up">
+        <div className="animate-up btn-row">
           <UserLists />
           <ListItem />
         </div>
-      </Container>
+      </div>
     );
   }
 }

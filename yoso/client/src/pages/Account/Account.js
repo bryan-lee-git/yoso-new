@@ -31,14 +31,13 @@ class Account extends Component {
                 {(context) => {
                     return (
                         <Container className="center-align">
-                            <Container>
                             <Row>
                                 <Col s={12}>
                                     <h1 className="white-text fade-in">YOUR ACCOUNT INFO</h1>
                                 </Col>
                             </Row>
                             <form>
-                                <Card id="account-form" className="animate-up">
+                                <Card id="account-form" className="rounded animate-up">
                                     <Row>
                                         <Col s={12}>
                                             <Input s={12} l={6} onChange={this.handleInputChange} defaultValue={context.state.first} type="text" label="First Name" name="first" validate></Input>
@@ -82,7 +81,6 @@ class Account extends Component {
                                     </Row>
                                 </Card>  
                             </form>
-                            </Container>
                         </Container>
                     )
                 }}
