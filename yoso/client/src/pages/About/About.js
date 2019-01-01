@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Card } from "react-materialize";
+import { Container, Row, Col, Card, Button } from "react-materialize";
 
 const About = () => {
     return (
@@ -14,7 +14,7 @@ const About = () => {
             <Row className="btn-row">
                 <Col className="animate-up" s={12} m={12} l={4}>
                     <Card className="z-depth-4 about-card" id="what-card">
-                        <h4>What?</h4>
+                        <h3 className="card-header-text">What?</h3>
                         <p>
                             Its a smart grocery shopping assistant that...
                             <br/><br/>
@@ -29,7 +29,7 @@ const About = () => {
                 </Col>
                 <Col className="animate-up-2" s={12} m={12} l={4}>
                     <Card className="z-depth-4 about-card" id="why-card">
-                        <h4>Why?</h4>
+                        <h3 className="card-header-text">Why?</h3>
                         <p>Ever had a craving, gone to your fridge to fix yourself a nice meal, and then realized that the ingredients you needed had expired?
                         <br/><br/>
                         Ever forgot to check if you needed toilet paper and then had to go back to the store?
@@ -42,10 +42,10 @@ const About = () => {
                 </Col>
                 <Col className="animate-up-3" s={12} m={12} l={4}>
                     <Card className="z-depth-4 about-card" id="dev-card">
-                        <h4>Who?</h4>
+                        <h3 className="card-header-text">Who?</h3>
                         <Row>
                             <Col s={12}>
-                                <h5>Panda Warriors DG is...</h5>                            
+                                <h5>Panda Warriors DG...</h5>                            
                             </Col>
                         </Row>
                         <br/>
