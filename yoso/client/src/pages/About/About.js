@@ -5,11 +5,12 @@ const About = () => {
     return (
         <Container className="center-align">
             <Row>
-                <br/>
+                <br/><br/>
                 <Col s={6} offset="s3">
                     <img id="home-logo" alt="yoso logo" src="./img/Yoso-Logo-Large-Text-White-Tag-Shadow.svg"></img>            
                 </Col>
             </Row>
+            <br/>
             <Row className="btn-row">
                 <Col className="animate-up" s={12} m={12} l={4}>
                     <Card className="z-depth-4 about-card" id="what-card">

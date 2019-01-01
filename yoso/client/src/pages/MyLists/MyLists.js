@@ -7,6 +7,7 @@ class MyLists extends Component {
   render() {
     return (
       <div className="center-align">
+      <br/>
         <Row>
           <Col s={12}>
             <h1 className="white-text fade-in">YOUR LISTS</h1>

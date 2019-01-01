@@ -36,13 +36,14 @@ class SignUp extends Component {
 
     return (
       <Container className="center-align">
+      <br/>
         <Row>
           <Col s={12}>
-            <h1 className="white-text fade-in">CREATE ACCOUNT</h1>
+            <h1 className="white-text fade-in">NEW ACCOUNT</h1>
           </Col>
         </Row>
         <form className="btn-row">
-          <Card id="signup-form" className="rounded animate-up">
+          <Card id="signup-form" className="rounded animate-up z-depth-4">
             <Row>
               <Col s={12}>
                 <Input s={12} l={6} onChange={this.handleInputChange} type="text" label="First Name" name="first" validate></Input>

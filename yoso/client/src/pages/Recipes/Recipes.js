@@ -6,6 +6,7 @@ class Recipes extends Component {
   render() {
     return (
       <div className="center-align">
+        <br/>
         <Row>
           <Col s={12}>
             <h1 className="white-text fade-in">FIND RECIPES</h1>

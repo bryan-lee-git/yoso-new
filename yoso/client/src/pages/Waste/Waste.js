@@ -6,6 +6,7 @@ class Waste extends Component {
   render() {
     return (
       <Container className="center-align">
+        <br/>
         <Row>
           <Col s={12}>
             <h1 className="white-text fade-in">WASTE LESS!</h1>

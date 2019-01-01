@@ -33,6 +33,7 @@ class SignIn extends Component {
         return (
         <Container className="center-align">
             <Container>
+                <br/>
                 <Row>
                     <Col s={12}>
                         <h1 className="white-text fade-in">SIGN IN</h1>
@@ -40,7 +41,7 @@ class SignIn extends Component {
                 </Row>
                 <form>
                     <Container className="btn-row">
-                        <Card id="signin-form" className="rounded animate-up">
+                        <Card id="signin-form" className="rounded animate-up z-depth-4">
                         <br/>
                             <Row>
                                 <Col s={12} l={12}><Input s={12} onChange={this.handleInputChange} label="Email" type="email" name="email" validate><Icon>email</Icon></Input></Col>
