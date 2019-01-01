@@ -1,11 +1,20 @@
 import React, { Component } from 'react';
 import ListItem from '../../components/ListItem'
+import { Container, Row, Col } from "react-materialize";
 
 class Recipes extends Component {
   render() {
     return (
-      <div>
-        <ListItem />
+      <div className="center-align">
+        <br/>
+        <Row>
+          <Col s={12}>
+            <h1 className="white-text fade-in">FIND RECIPES</h1>
+          </Col>
+        </Row>
+        <div className="animate-up btn-row">
+          <ListItem />
+        </div>
       </div>
     );
   }

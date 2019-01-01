@@ -1,30 +1,43 @@
-import React from 'react';
-import { Navbar, NavItem, Icon } from 'react-materialize';
+import React, { Component } from 'react';
+import { Icon, Navbar, NavItem } from 'react-materialize';
 import { Link } from 'react-router-dom';
 import '../Yoso.css';
 
 
-const Nav = (props) => {
-  return (
-    <div className="z-depth-5">
-        {props.loggedIn ? 
-          <Navbar id="main-nav" right>
-            <NavItem><Link to="/lists"><Icon>format_list_numbered</Icon></Link></NavItem>
-            <NavItem><Link to="/pantry"><Icon>kitchen</Icon></Link></NavItem>
-            <NavItem><Link to="/waste"><Icon>pie_chart</Icon></Link></NavItem>
-            <NavItem><Link to="/recipes"><Icon>find_in_page</Icon></Link></NavItem>
-            <NavItem><Link to="/account"><Icon>account_circle</Icon></Link></NavItem>
-            <NavItem><Link to="/home"><Icon>home</Icon></Link></NavItem>
-            <NavItem onClick={props.signOut}><Icon>exit</Icon></NavItem>
-          </Navbar>
-          :
-          <Navbar id="main-nav" right>
-            <NavItem><Link to="/"><Icon>home</Icon></Link></NavItem>
-          </Navbar>
-        }
-        
-    </div>
-  );
+class Nav extends Component {
+
+  state = {}
+
+  handleLogOut = e => {
+    e.preventDefault();
+    this.props.logOut();
+  }
+
+  render() {
+
+    return (
+      <div className="z-depth-5">
+        <Navbar id="main-nav" right>
+          {this.props.loggedIn
+            ? 
+              <ul>
+                <li><Link to="/lists"><Icon>format_list_numbered</Icon></Link></li>
+                <li><Link to="/pantry"><Icon>kitchen</Icon></Link></li>
+                <li><Link to="/waste"><Icon>pie_chart</Icon></Link></li>
+                <li><Link to="/recipes"><Icon>find_in_page</Icon></Link></li>
+                <li><Link to="/account"><Icon>account_circle</Icon></Link></li>
+                <li><Link to="/home"><Icon>home</Icon></Link></li>
+                <NavItem onClick={this.handleLogOut}><Icon>exit_to_app</Icon></NavItem>
+              </ul>
+            :
+              <ul>
+                <li><Link to="/"><Icon>home</Icon></Link></li>
+              </ul>
+          }
+        </Navbar>
+      </div>
+    );
+  }
 };
 
 export default Nav;
