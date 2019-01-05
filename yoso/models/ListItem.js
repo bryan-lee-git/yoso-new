@@ -9,17 +9,11 @@ module.exports = function(sequelize, DataTypes) {
     },
     unitSize: {
       type: DataTypes.INTEGER,
-      allowNull: false,
-      validate: {
-        min: 1
-      }
+      allowNull: false
     },
     quantity: {
       type: DataTypes.INTEGER,
-      allowNull: false,
-      validate: {
-        min: 1
-      }
+      allowNull: false
     }
   });
   return ListItem;

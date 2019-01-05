@@ -10,7 +10,7 @@ export default {
     return axios.get(`/api/pantry/${id}`);
   },
   // Create a new Pantry Item.
-  createPantryItem: function() {
+  findOrCreatePantryItem: function() {
     return axios.post(`/api/pantry`);
   },
   // Edit a specific Pantry item.

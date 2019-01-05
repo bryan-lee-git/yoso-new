@@ -9,13 +9,13 @@ export default class ItemSearch extends Component {
   render() {
     return (
       <Row>
-        <Col s={12}>
+        <Col s={8} offset="s2">
           <Row>
             <Input
+              s={6}
               className="autocomplete white-text"
-              s={12}
               type="text"
-              defaultValue="What do you need?"
+              value={this.props.search}
               label="Add another item"
               id="autocomplete-input"
               name="item"
@@ -25,6 +25,17 @@ export default class ItemSearch extends Component {
                 textsms
               </Icon>
             </Input>
+            <button
+              className="btn waves-effect waves-light"
+              type="submit"
+              name="action"
+              onClick={e =>
+                this.props.onSubmit(e, this.props.listId, this.props.search)
+              }
+            >
+              Submit
+              <i className="material-icons right">send</i>
+            </button>
           </Row>
         </Col>
       </Row>

@@ -19,7 +19,14 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
-    db.ListItems.create(req.body)
+    console.log(
+      `here's req.body inside the createmethod of listitem: `,
+      req.body
+    );
+    db.ListItems.create({
+      ListId: req.body.ListId,
+      name: req.body.data
+    })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

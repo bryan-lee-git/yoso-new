@@ -5,7 +5,7 @@ const PantryController = require("../../controllers/PantryController");
 router
   .route("/")
   .get(PantryController.findAll)
-  .post(PantryController.create);
+  .post(PantryController.findOrCreate);
 
 // Matches with "/api/pantry/:id"
 router
