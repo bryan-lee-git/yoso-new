@@ -6,21 +6,10 @@ class ListItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      listId: 0,
-      items: [],
+      listId: props.listId,
+      items: props.items,
       update: false
     };
-  }
-
-  componentDidMount() {
-    const { listId } = this.props;
-    console.log(`here's the list to search for: `, this.props.listId);
-    ItemAPI.getItems(listId).then(items =>
-      this.setState({
-        listId: listId,
-        items: items.data
-      })
-    );
   }
 
   handleClick = e => {
@@ -44,11 +33,11 @@ class ListItem extends Component {
         break;
       case "delete":
         ItemAPI.deleteItem(this.state.listId, id).then(res =>
-          console.log(`response from db: `, res)
+          this.setState({
+            update: !this.state.update
+          })
         );
-        this.setState({
-          update: !this.state.update
-        });
+
         break;
       default:
         console.log(`I don't know what to do with that click!`);

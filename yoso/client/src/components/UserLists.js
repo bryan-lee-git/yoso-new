@@ -2,16 +2,27 @@ import React, { Component } from "react";
 import { Card, Row, Col } from "react-materialize";
 import ListItems from "../../src/components/ListItem";
 import ListAPI from "../utilities/ListAPI";
+import ItemAPI from "../utilities/ItemAPI";
+import PantryAPI from "../utilities/PantryAPI";
+import ItemSearch from "../components/ItemSearch";
 
 class UserLists extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      lists: []
+      lists: [],
+      items: [],
+      listId: 0,
+      id: 0,
+      item: ""
     };
   }
 
   componentDidMount() {
+    this.getLists(this.getListItems);
+  }
+
+  getLists = cb => {
     const { id } = this.props.state;
     ListAPI.getLists(id)
       .then(lists =>
@@ -19,8 +30,34 @@ class UserLists extends Component {
           lists: lists.data
         })
       )
+      .then(cb(id))
       .catch(err => console.log(err));
-  }
+  };
+
+  getListItems = listId => {
+    console.log(`here's the list to search for: `, listId);
+    ItemAPI.getItems(listId).then(items =>
+      this.setState({
+        listId: listId,
+        items: items.data
+      })
+    );
+  };
+
+  handleChange = e => {
+    e.preventDefault();
+    const { value, name } = e.target;
+    this.setState({
+      [name]: value
+    });
+  };
+
+  handleSubmit = (e, listId, data) => {
+    e.preventDefault();
+    PantryAPI.createItem(listId, data).then(res =>
+      console.log(`Here's the response from the db: `, res)
+    );
+  };
 
   render() {
     console.log(
@@ -31,7 +68,13 @@ class UserLists extends Component {
     const listDivs = this.state.lists.map((item, index) => (
       <li key={index}>
         <h4>{item.name}</h4>
-        <ListItems listId={item.id} />
+        <ItemSearch
+          search={this.state.item}
+          listId={item.id}
+          onChange={this.handleChange}
+          onSubmit={this.handleSubmit}
+        />
+        <ListItems listId={item.id} items={this.state.items} />
       </li>
     ));
 
