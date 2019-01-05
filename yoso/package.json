@@ -1,7 +1,7 @@
 {
-  "name": "mern",
+  "name": "yoso",
   "version": "1.0.0",
-  "description": "",
+  "description": "You only shop once.",
   "main": "server.js",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
@@ -13,7 +13,7 @@
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build"
   },
-  "author": "",
+  "author": "Panda Warriors Dev Group",
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^3.5.0",
