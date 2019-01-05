@@ -140,6 +140,11 @@ footer.page-footer {
     min-height: 50px;
 }
 
+#new-list-btn {
+    width: 100%;
+    min-height: 50px;
+}
+
 #home-logo,
 .fade-in {
     -webkit-animation: fadein 1.5s forwards;
@@ -175,13 +180,15 @@ footer.page-footer {
 #what-card,
 #why-card,
 #dev-card,
-#account-form {
+#account-form,
+#my-lists,
+#new-list {
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
 }
 
-#home-list {
+#home-list, #my-lists {
     background-image: url("/img/baseline-list-24px.svg");
 }
 
@@ -209,6 +216,10 @@ footer.page-footer {
 
 #home-signup {
     background-image: url("/img/baseline-create-24px.svg");
+}
+
+#new-list {
+    background-image: url("/img/baseline-add_shopping_cart-24px.svg");
 }
 
 #signup-form,
