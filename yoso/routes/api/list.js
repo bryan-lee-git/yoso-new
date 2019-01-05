@@ -8,6 +8,7 @@ router
   .post(ListController.create);
 
 router.route("/findAll").post(ListController.findAll);
+router.route("/items").post(ListController.createListWithItems);
 
 // Matches with "/api/list/:id"
 router

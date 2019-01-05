@@ -19,9 +19,11 @@ const MyLists = props => {
         </Row>
         <Row className="btn-row">
           <Col s={12}>
-            <Button id="new-list-btn" className="btn btn-large">
-              Create A New List
-            </Button>
+            <Link to="/newlist">
+              <Button id="new-list-btn" className="btn btn-large">
+                Create A New List
+              </Button>
+            </Link>
           </Col>
           {!props.lists ? (
             <div>
