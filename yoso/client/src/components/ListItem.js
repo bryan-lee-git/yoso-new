@@ -7,9 +7,18 @@ class ListItem extends Component {
     super(props);
     this.state = {
       listId: props.listId,
-      items: props.items,
+      items: [],
       update: false
     };
+  }
+
+  componentDidMount() {
+    console.log(`here's the list to search for: `, this.state.listId);
+    ItemAPI.getItems(this.state.listId).then(items =>
+      this.setState({
+        items: items.data
+      })
+    );
   }
 
   handleClick = e => {
