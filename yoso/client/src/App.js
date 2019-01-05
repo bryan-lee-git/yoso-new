@@ -6,7 +6,6 @@ import {
   Link
 } from "react-router-dom";
 import Nav from "./components/Nav";
-import { Footer, Col } from "react-materialize";
 import Landing from "./pages/Landing";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
