@@ -22,7 +22,7 @@ class UserLists extends Component {
     this.getLists(this.getListItems);
   }
 
-  getLists = cb => {
+  getLists = () => {
     const { id } = this.props.state;
     ListAPI.getLists(id)
       .then(lists =>
@@ -30,7 +30,6 @@ class UserLists extends Component {
           lists: lists.data
         })
       )
-      .then(cb(id))
       .catch(err => console.log(err));
   };
 
@@ -54,7 +53,7 @@ class UserLists extends Component {
 
   handleSubmit = (e, listId, data) => {
     e.preventDefault();
-    PantryAPI.createItem(listId, data).then(res =>
+    ItemAPI.createItem(listId, data).then(res =>
       console.log(`Here's the response from the db: `, res)
     );
   };
@@ -74,7 +73,7 @@ class UserLists extends Component {
           onChange={this.handleChange}
           onSubmit={this.handleSubmit}
         />
-        <ListItems listId={item.id} items={this.state.items} />
+        <ListItems listId={item.id} />
       </li>
     ));
 
