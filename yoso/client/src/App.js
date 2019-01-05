@@ -8,7 +8,7 @@ import SignUp from './pages/SignUp';
 import Home from './pages/Home';
 import MyLists from './pages/MyLists';
 import Pantry from './pages/Pantry';
-import Recipes from './pages/Recipes';
+import RecipeContain from './pages/RecipeContain';
 import Waste from './pages/Waste';
 import About from './pages/About';
 import Account from './pages/Account';
@@ -126,7 +126,7 @@ class App extends Component {
               <PrivateRoute exact path="/home" component={Home} />
               <PrivateRoute exact path="/lists" component={MyLists} />
               <PrivateRoute exact path="/pantry" component={Pantry} />
-              <PrivateRoute exact path="/recipes" component={Recipes} />
+              <PrivateRoute exact path="/recipes" component={RecipeContain} />
               <PrivateRoute exact path="/waste" component={Waste} />
               <PrivateRoute exact path="/account" component={Account} />
             </main>
