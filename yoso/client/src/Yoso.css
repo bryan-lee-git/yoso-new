@@ -128,6 +128,14 @@ footer.page-footer {
     width: 100%;
 }
 
+#save-list {
+    width: 100%;
+}
+
+.list-card {
+    min-height: 110px;
+}
+
 .landing-btn {
     height: 230px;
     margin-bottom: 20px;

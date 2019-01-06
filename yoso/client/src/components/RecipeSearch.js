@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Row, Input } from "react-materialize";
+import { Row, Input } from "react-materialize";
 
 
 const RecipeSearch = (props) => {
