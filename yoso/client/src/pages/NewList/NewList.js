@@ -67,12 +67,12 @@ export default class NewList extends Component {
               <Row>
                 <Col s={12}>
                   <h1 className="white-text fade-in">
-                    {!this.state.listName ? "Enter Your List Name" : this.state.listName}
+                    {!this.state.listName ? "New List" : this.state.listName}
                   </h1>
                 </Col>
               </Row>
               <Row>
-                <Col s={4}>
+                <Col s={12} l={4}>
                   <Card className="z-depth-5 animate-up list-card">
                       <Input
                         s={12}
@@ -83,30 +83,30 @@ export default class NewList extends Component {
                       />
                   </Card>
                 </Col>
-                <Col s={8}>
+                <Col s={12} l={8}>
                   <Card className="z-depth-5 animate-up-2 list-card">
                       <Input
-                        s={3}
-                        placeholder="Item Name"
+                        s={4} l={3}
+                        placeholder="Name"
                         label="New Item"
                         name="name"
                         onChange={this.handleChange}
                       />
                       <Input
-                        s={3}
-                        placeholder="Enter Unit Size"
+                        s={4} l={3}
+                        placeholder="Unit Size"
                         label="Unit Size"
                         name="unitSize"
                         onChange={this.handleChange}
                       />
                       <Input
-                        s={3}
-                        placeholder="Enter Quantity"
+                        s={4} l={3}
+                        placeholder="Quantity"
                         label="Quantity"
                         name="quantity"
                         onChange={this.handleChange}
                       />
-                      <Button s={3} className="btn btn-large" onClick={this.handleNewItem}>Add Item</Button>
+                      <Button s={12} l={3} className="btn btn-large" onClick={this.handleNewItem}>Add Item</Button>
                   </Card>
                 </Col>
               </Row>
@@ -144,7 +144,7 @@ export default class NewList extends Component {
                   </Card>
                 </Col>
               </Row>
-              <Row>
+              <Row className="btn-row">
                 <Button id="save-list" className="btn btn-large animate-up-4" onClick={e => this.createList(e, context.state.id)}>Save List</Button>
               </Row>
             </Container>
