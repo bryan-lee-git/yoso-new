@@ -18,15 +18,13 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  create: function(req, res) {
+  bulkCreate: function(req, res) {
     console.log(
-      `here's req.body inside the createmethod of listitem: `,
+      `here's req.body inside the bulkcreate method of listitem: `,
       req.body
     );
-    db.ListItems.create({
-      ListId: req.body.ListId,
-      name: req.body.data
-    })
+    console.log(`here's req.body.data: `, req.body.data);
+    db.ListItems.bulkCreate(req.body.data, { fields: ["name", "ListId"] })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

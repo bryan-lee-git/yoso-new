@@ -18,12 +18,13 @@ export default {
     });
   },
   // Create a new item for a list.
-  createItem: function(listId, data) {
+  createItem: function(data) {
+    console.log(`from inside itemapi, here's the data being sent: `, data);
+
     return axios({
       method: `post`,
       url: `/api/listitem`,
       data: {
-        ListId: listId,
         data
       }
     });

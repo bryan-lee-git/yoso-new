@@ -24,7 +24,24 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
-    db.List.create(req.body)
+    db.List.create({
+      UserId: req.body.UserId,
+      name: req.body.name
+    })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+
+  createListWithItems: function(req, res) {
+    console.log(`here's the items to save: `, req.body.items);
+    db.List.create(
+      {
+        UserId: req.body.UserId,
+        name: req.body.name,
+        ListItems: req.body.items //must be an array of objects!!
+      },
+      { include: [db.ListItem] }
+    )
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
