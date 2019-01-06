@@ -75,7 +75,7 @@ class App extends Component {
             city,
             state,
             zip,
-            loggedIn: true
+            id: response.data.id
           });
           if (cb) cb();
         } else console.log("Could not sign up! Please try again.");
@@ -110,7 +110,6 @@ class App extends Component {
                 state: response.data.state,
                 zip: response.data.zip,
                 id: response.data.id,
-                loggedIn: true
               });
               if (cb) cb();
             } else console.log("Incorrect Log-In Attempt. Please Try Again.");

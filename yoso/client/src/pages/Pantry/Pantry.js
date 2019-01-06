@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PantryItem from '../../components/PantryItem';
-import { Container, Row, Col } from "react-materialize";
+import { Row, Col } from "react-materialize";
 
 class Pantry extends Component {
   render() {

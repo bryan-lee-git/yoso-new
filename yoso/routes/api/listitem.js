@@ -5,7 +5,7 @@ const ListItemController = require("../../controllers/ListItemController");
 router
   .route("/")
   .get(ListItemController.findAll)
-  .post(ListItemController.bulkCreate);
+  .post(ListItemController.create);
 
 router.route("/findAll").post(ListItemController.findAll);
 

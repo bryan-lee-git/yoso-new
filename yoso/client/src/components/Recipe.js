@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Row, Col, CardTitle } from 'react-materialize';
+import { Card, Col, CardTitle } from 'react-materialize';
 
 const Recipe = (props) => {
     return (

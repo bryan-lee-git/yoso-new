@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Card, Button } from "react-materialize";
+import { Container, Row, Col, Card } from "react-materialize";
 
 const About = () => {
     return (
