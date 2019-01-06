@@ -19,6 +19,7 @@ import About from "./pages/About";
 import Account from "./pages/Account";
 import axios from "axios";
 import "./Yoso.css";
+import ListAPI from "./utilities/ListAPI";
 export const MyContext = React.createContext();
 
 const bcrypt = require("bcryptjs");
@@ -109,8 +110,9 @@ class App extends Component {
                 city: response.data.city,
                 state: response.data.state,
                 zip: response.data.zip,
-                id: response.data.id,
+                id: response.data.id
               });
+              this.getLists(this.state.id);
               if (cb) cb();
             } else console.log("Incorrect Log-In Attempt. Please Try Again.");
           });
@@ -151,6 +153,7 @@ class App extends Component {
 
             loggedIn: true
           });
+
           if (cb) cb();
         } else console.log("Could not sign up! Please try again.");
       })
@@ -164,6 +167,15 @@ class App extends Component {
     this.setState({ loggedIn: false, name: "", email: "" });
     yosoAuth.signOut();
     if (cb) cb();
+  };
+
+  getLists = id => {
+    ListAPI.getLists(id).then(res => {
+      console.log(`Here's the user's lists: `, res);
+      this.setState({
+        lists: res.data
+      });
+    });
   };
 
   render() {
@@ -203,7 +215,12 @@ class App extends Component {
               />
               <Route exact path="/about" component={About} />
               <PrivateRoute exact path="/home" component={Home} />
-              <PrivateRoute exact path="/lists" component={MyLists} />
+              <PrivateRoute
+                exact
+                path="/lists"
+                component={MyLists}
+                lists={this.state.lists}
+              />
               <PrivateRoute exact path="/newlist" component={NewList} />
               <PrivateRoute exact path="/pantry" component={Pantry} />
               <PrivateRoute exact path="/recipes" component={RecipeContain} />
