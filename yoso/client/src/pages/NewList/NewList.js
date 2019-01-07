@@ -12,14 +12,24 @@ import {
 } from "react-materialize";
 import ListAPI from "../../utilities/ListAPI";
 import ItemAPI from "../../utilities/ItemAPI";
+import TermsAPI from "../../utilities/TermsAPI";
 
 import { MyContext } from "../../App";
 
 export default class NewList extends Component {
-
   state = {
-    items: []
+    items: [],
+    terms: {}
   };
+
+  componentDidMount() {
+    TermsAPI.getTerms().then(results => {
+      console.log(
+        `inside the component did mount of newitems, here's what we're getting back from the server: `,
+        results
+      );
+    });
+  }
 
   handleChange = e => {
     e.preventDefault();
@@ -33,7 +43,11 @@ export default class NewList extends Component {
 
   handleNewItem = e => {
     e.preventDefault();
-    const newItem = { name: this.state.name, unitSize: this.state.unitSize, quantity: this.state.quantity };
+    const newItem = {
+      name: this.state.name,
+      unitSize: this.state.unitSize,
+      quantity: this.state.quantity
+    };
     const newItems = [...this.state.items, newItem];
     this.setState({ items: newItems });
   };
@@ -48,7 +62,7 @@ export default class NewList extends Component {
   createList = (e, id) => {
     e.preventDefault();
     console.log(id);
-    ListAPI.createList(id, {name: this.state.listName}).then(response => {
+    ListAPI.createList(id, { name: this.state.listName }).then(response => {
       this.state.items.forEach(item => {
         item.ListId = response.data.id;
         ItemAPI.createItem(item).then(response => {
@@ -61,7 +75,7 @@ export default class NewList extends Component {
   render() {
     return (
       <MyContext.Consumer>
-        {(context => {
+        {context => {
           return (
             <Container className="center-align">
               <Row>
@@ -74,39 +88,49 @@ export default class NewList extends Component {
               <Row>
                 <Col s={12} l={4}>
                   <Card className="z-depth-5 animate-up list-card">
-                      <Input
-                        s={12}
-                        placeholder="Enter list name here"
-                        label="List Name"
-                        name="listName"
-                        onChange={this.handleChange}
-                      />
+                    <Input
+                      s={12}
+                      placeholder="Enter list name here"
+                      label="List Name"
+                      name="listName"
+                      onChange={this.handleChange}
+                    />
                   </Card>
                 </Col>
                 <Col s={12} l={8}>
                   <Card className="z-depth-5 animate-up-2 list-card">
-                      <Input
-                        s={4} l={3}
-                        placeholder="Name"
-                        label="New Item"
-                        name="name"
-                        onChange={this.handleChange}
-                      />
-                      <Input
-                        s={4} l={3}
-                        placeholder="Unit Size"
-                        label="Unit Size"
-                        name="unitSize"
-                        onChange={this.handleChange}
-                      />
-                      <Input
-                        s={4} l={3}
-                        placeholder="Quantity"
-                        label="Quantity"
-                        name="quantity"
-                        onChange={this.handleChange}
-                      />
-                      <Button s={12} l={3} className="btn btn-large" onClick={this.handleNewItem}>Add Item</Button>
+                    <Input
+                      s={4}
+                      l={3}
+                      placeholder="Name"
+                      label="New Item"
+                      name="name"
+                      onChange={this.handleChange}
+                    />
+                    <Input
+                      s={4}
+                      l={3}
+                      placeholder="Unit Size"
+                      label="Unit Size"
+                      name="unitSize"
+                      onChange={this.handleChange}
+                    />
+                    <Input
+                      s={4}
+                      l={3}
+                      placeholder="Quantity"
+                      label="Quantity"
+                      name="quantity"
+                      onChange={this.handleChange}
+                    />
+                    <Button
+                      s={12}
+                      l={3}
+                      className="btn btn-large"
+                      onClick={this.handleNewItem}
+                    >
+                      Add Item
+                    </Button>
                   </Card>
                 </Col>
               </Row>
@@ -115,8 +139,7 @@ export default class NewList extends Component {
                   <Card className="animate-up-3">
                     <Row>
                       <h2>Your List</h2>
-                      {this.state.items.length > 0
-                        ?
+                      {this.state.items.length > 0 ? (
                         <Table className="striped highlight centered">
                           <thead>
                             <tr>
@@ -132,24 +155,32 @@ export default class NewList extends Component {
                                 <td>{item.name}</td>
                                 <td>{item.unitSize}</td>
                                 <td>{item.quantity}</td>
-                                <td onClick={this.handleRemoveItem}><Icon data-index={index}>delete_forever</Icon></td>
+                                <td onClick={this.handleRemoveItem}>
+                                  <Icon data-index={index}>delete_forever</Icon>
+                                </td>
                               </tr>
                             ))}
                           </tbody>
                         </Table>
-                        :
+                      ) : (
                         <div>No Items Added to Your List Yet</div>
-                      }
+                      )}
                     </Row>
                   </Card>
                 </Col>
               </Row>
               <Row className="btn-row">
-                <Button id="save-list" className="btn btn-large animate-up-4" onClick={e => this.createList(e, context.state.id)}>Save List</Button>
+                <Button
+                  id="save-list"
+                  className="btn btn-large animate-up-4"
+                  onClick={e => this.createList(e, context.state.id)}
+                >
+                  Save List
+                </Button>
               </Row>
             </Container>
-          )
-        })}
+          );
+        }}
       </MyContext.Consumer>
     );
   }
