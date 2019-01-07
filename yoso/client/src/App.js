@@ -11,6 +11,7 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Home from "./pages/Home";
 import MyLists from "./pages/MyLists";
+import UserLists from "./pages/UserLists";
 import NewList from "./pages/NewList";
 import Pantry from "./pages/Pantry";
 import RecipeContain from "./pages/RecipeContain";
@@ -222,6 +223,7 @@ class App extends Component {
                 lists={this.state.lists}
               />
               <PrivateRoute exact path="/newlist" component={NewList} />
+              <PrivateRoute exact path="/mylists" component={UserLists} />
               <PrivateRoute exact path="/pantry" component={Pantry} />
               <PrivateRoute exact path="/recipes" component={RecipeContain} />
               <PrivateRoute exact path="/waste" component={Waste} />

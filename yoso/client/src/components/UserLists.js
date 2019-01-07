@@ -3,7 +3,7 @@ import { Card, Row, Col } from "react-materialize";
 import ListItems from "../../src/components/ListItem";
 import ListAPI from "../utilities/ListAPI";
 import ItemAPI from "../utilities/ItemAPI";
-import PantryAPI from "../utilities/PantryAPI";
+
 import ItemSearch from "../components/ItemSearch";
 
 class UserLists extends Component {
