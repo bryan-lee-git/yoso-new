@@ -21,7 +21,7 @@ import Account from "./pages/Account";
 import axios from "axios";
 import "./Yoso.css";
 import ListAPI from "./utilities/ListAPI";
-export const MyContext = React.createContext();
+export const MyContext = React.createContext({});
 
 const bcrypt = require("bcryptjs");
 const salt = bcrypt.genSaltSync(10);
@@ -47,8 +47,19 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 );
 
 class App extends Component {
+  getLists = id => {
+    ListAPI.getLists(id).then(res => {
+      console.log(`From getlists at app.js, here's the user's lists: `, res);
+      this.setState({
+        lists: res.data
+      });
+    });
+  };
+
   state = {
-    loggedIn: false
+    loggedIn: false,
+    lists: [],
+    getLists: this.getLists
   };
 
   handleSignUp = (data, cb) => {
@@ -168,15 +179,6 @@ class App extends Component {
     this.setState({ loggedIn: false, name: "", email: "" });
     yosoAuth.signOut();
     if (cb) cb();
-  };
-
-  getLists = id => {
-    ListAPI.getLists(id).then(res => {
-      console.log(`Here's the user's lists: `, res);
-      this.setState({
-        lists: res.data
-      });
-    });
   };
 
   render() {

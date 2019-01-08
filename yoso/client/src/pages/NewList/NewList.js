@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import {
   Card,
   Container,
@@ -7,42 +8,47 @@ import {
   Autocomplete,
   Input,
   Button,
-  Table,
   Icon
 } from "react-materialize";
 import ListAPI from "../../utilities/ListAPI";
 import ItemAPI from "../../utilities/ItemAPI";
-import TermsAPI from "../../utilities/TermsAPI";
-
+import { terms } from "../../utilities/ItemTerms";
+import ShowItems from "../../components/ShowItems";
 import { MyContext } from "../../App";
 
 export default class NewList extends Component {
   state = {
     items: [],
-    terms: {}
+    terms: terms
   };
-
-  componentDidMount() {
-    TermsAPI.getTerms().then(results => {
-      console.log(
-        `inside the component did mount of newitems, here's what we're getting back from the server: `,
-        results
-      );
-    });
-  }
 
   handleChange = e => {
     e.preventDefault();
+
     const { name, value } = e.target;
+    console.log(`inside handleChange, name: ${name} and value: ${value}`);
+    if (value) {
+      const capName = value.replace(
+        value.charAt(0),
+        value.charAt(0).toUpperCase()
+      );
+      this.setState({ [name]: capName });
+    }
+  };
+  handleAutocomplete = value => {
+    console.log(`inside handleAutocomplete, value: ${value}`);
     const capName = value.replace(
       value.charAt(0),
       value.charAt(0).toUpperCase()
     );
-    this.setState({ [name]: capName });
+    this.setState({
+      name: capName
+    });
   };
 
   handleNewItem = e => {
     e.preventDefault();
+
     const newItem = {
       name: this.state.name,
       unitSize: this.state.unitSize,
@@ -61,10 +67,14 @@ export default class NewList extends Component {
 
   createList = (e, id) => {
     e.preventDefault();
-    console.log(id);
+    console.log(`userid going to db is ${id}`);
     ListAPI.createList(id, { name: this.state.listName }).then(response => {
+      console.log(`response data is: `, response.data);
       this.state.items.forEach(item => {
         item.ListId = response.data.id;
+        this.setState({
+          listId: response.data.id
+        });
         ItemAPI.createItem(item).then(response => {
           console.log(response);
         });
@@ -79,6 +89,16 @@ export default class NewList extends Component {
           return (
             <Container className="center-align">
               <Row>
+                <Col s={3}>
+                  <Link to="/lists">
+                    <br />
+                    <br />
+                    <br />
+                    <Button>
+                      <Icon>arrow_back</Icon>
+                    </Button>
+                  </Link>
+                </Col>
                 <Col s={12}>
                   <h1 className="white-text fade-in">
                     {!this.state.listName ? "New List" : this.state.listName}
@@ -98,12 +118,16 @@ export default class NewList extends Component {
                   </Card>
                 </Col>
                 <Col s={12} l={8}>
-                  <Card className="z-depth-5 animate-up-2 list-card">
-                    <Input
+                  <Card
+                    id="new-item-input"
+                    className="z-depth-5 animate-up-2 list-card"
+                  >
+                    <Autocomplete
                       s={4}
                       l={3}
-                      placeholder="Name"
-                      label="New Item"
+                      data={this.state.terms}
+                      placeholder="Name" //label="New Item"
+                      onAutocomplete={this.handleAutocomplete}
                       name="name"
                       onChange={this.handleChange}
                     />
@@ -134,41 +158,12 @@ export default class NewList extends Component {
                   </Card>
                 </Col>
               </Row>
-              <Row>
-                <Col s={12}>
-                  <Card className="animate-up-3">
-                    <Row>
-                      <h2>Your List</h2>
-                      {this.state.items.length > 0 ? (
-                        <Table className="striped highlight centered">
-                          <thead>
-                            <tr>
-                              <th>Name</th>
-                              <th>Size</th>
-                              <th>Quantity</th>
-                              <th>Remove Item</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {this.state.items.map((item, index) => (
-                              <tr key={index}>
-                                <td>{item.name}</td>
-                                <td>{item.unitSize}</td>
-                                <td>{item.quantity}</td>
-                                <td onClick={this.handleRemoveItem}>
-                                  <Icon data-index={index}>delete_forever</Icon>
-                                </td>
-                              </tr>
-                            ))}
-                          </tbody>
-                        </Table>
-                      ) : (
-                        <div>No Items Added to Your List Yet</div>
-                      )}
-                    </Row>
-                  </Card>
-                </Col>
-              </Row>
+              <ShowItems
+                currentList={this.state.items}
+                name={this.state.listName}
+                onClick={this.handleRemoveItem}
+              />
+
               <Row className="btn-row">
                 <Button
                   id="save-list"

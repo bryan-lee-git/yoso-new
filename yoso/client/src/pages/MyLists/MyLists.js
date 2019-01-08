@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { Container, Row, Col, Button } from "react-materialize";
+import React from "react";
+import { Container, Row, Col, Button, Icon } from "react-materialize";
 import { Link } from "react-router-dom";
 import { MyContext } from "../../App";
 
@@ -7,14 +7,24 @@ const MyLists = () => {
   return (
     <MyContext.Consumer>
       {context => {
-        console.log(`context is `, context);
+        console.log(`context on mylists is is `, context);
         return (
           <div>
             <Container>
               <Row>
                 <br />
                 <br />
-                <Col s={12} l={6} offset="l3">
+                <Col s={1}>
+                  <Link to="/home">
+                    <br />
+                    <br />
+                    <br />
+                    <Button>
+                      <Icon>arrow_back</Icon>
+                    </Button>
+                  </Link>
+                </Col>
+                <Col s={6} l={6} offset="l2">
                   <img
                     id="home-logo"
                     alt="yoso logo"

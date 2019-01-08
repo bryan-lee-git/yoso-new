@@ -58,14 +58,18 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  remove: function(req, res) {
-    db.List.findOne({
+  destroy: function(req, res) {
+    console.log(
+      `inside listcontroller, remove method, here's the req.params: and req.body: `,
+      req.params,
+      req.body
+    );
+    db.List.destroy({
       where: {
-        userId: req.body.userId,
-        id: req.params.listId
+        UserId: req.body.userId,
+        id: req.params.id
       }
     })
-      .then(dbModel => dbModel.destroy())
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   }
