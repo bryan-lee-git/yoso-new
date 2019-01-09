@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Recipe from "../../components/Recipe";
-import { Container, Row, Col, Icon, Button } from "react-materialize";
+import { Container, Row, Col, Icon, Button, Card } from "react-materialize";
 import Yummly from "../../utilities/RecipeAPI";
 import RecipeSearch from "../../components/RecipeSearch";
 import { Link } from "react-router-dom";
@@ -57,10 +57,12 @@ class RecipeContain extends Component {
             <h1 className="white-text fade-in">FIND RECIPES</h1>
           </Col>
         </Row>
+        <Card className="rounded z-depth-5 btn-row">
         <RecipeSearch
           handleInputChange={this.handleInputChange}
           handleFormSubmit={this.handleFormSubmit}
         />
+        </Card>
         <div className="animate-up btn-row">
           {this.state.response ? (
             <Row>
@@ -75,7 +77,7 @@ class RecipeContain extends Component {
               ))}
             </Row>
           ) : (
-            <h2>{this.state.errMsg}</h2>
+            <div></div>
           )}
         </div>
       </Container>
