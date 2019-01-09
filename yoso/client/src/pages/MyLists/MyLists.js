@@ -37,7 +37,7 @@ const MyLists = () => {
                   <br />
                   <br />
                 </Col>
-                {!context.state.lists ? (
+                {context.state.lists.length === 0 ? (
                   <div>
                     <br />
                     <br />

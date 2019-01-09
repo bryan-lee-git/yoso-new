@@ -206,7 +206,9 @@ class App extends Component {
                 exact
                 path="/signin"
                 render={() => {
-                  return <SignIn signIn={this.handleSignIn} />;
+                  return (
+                    <SignIn signUpPath="/signup" signIn={this.handleSignIn} />
+                  );
                 }}
               />
               <Route

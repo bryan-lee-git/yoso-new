@@ -1,33 +1,37 @@
 module.exports = function(sequelize, DataTypes) {
   var Purchase = sequelize.define("Purchase", {
     unitSize: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      validate: {
+        min: 1
+      }
+    },
+    sizeQuantity: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       validate: {
         min: 1
       }
     },
     quantity: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       validate: {
         min: 1
       }
     },
     expiration: {
-      type: DataTypes.STRING,
-      validate: {
-        len: [1, 30]
-      }
+      type: DataTypes.DATEONLY,
+      allowNull: true
     },
     unitPrice: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       validate: {
         min: 1
       }
     },
-
     location: {
       type: DataTypes.STRING,
       validate: {
@@ -35,15 +39,10 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     ordinal: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      allowNull: true
     }
   });
-  // Purchase.associate = function (models) {
-  //     Purchase.belongsTo(models.User, {
-  //         foreignKey: {
-  //             allowNull: true
-  //         }
-  //     });
-  // };
+
   return Purchase;
 };

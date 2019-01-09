@@ -32,7 +32,7 @@ module.exports = function(sequelize, DataTypes) {
       )
     },
     shelfLife: {
-      type: DataTypes.DATEONLY
+      type: DataTypes.ENUM("WEEK", "BIWEEK", "MONTH", "QUARTER", "YEAR", "NONE")
     },
     category: {
       type: DataTypes.STRING,
