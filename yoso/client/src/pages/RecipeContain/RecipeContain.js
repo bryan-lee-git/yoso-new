@@ -68,6 +68,7 @@ class RecipeContain extends Component {
                 <Recipe
                   key={index}
                   title={recipe.recipeName}
+                  ingredients={recipe.ingredients}
                   img={recipe.smallImageUrls[0]}
                   link={`https://www.yummly.com/recipe/${recipe.id}`}
                 />

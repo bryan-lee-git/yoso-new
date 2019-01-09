@@ -1,30 +1,34 @@
 import React from "react";
-import { Card, Col, CardTitle } from "react-materialize";
+import { Card, Col, CardTitle, Modal, Button } from "react-materialize";
 
 const Recipe = props => {
-  return (
-    <div>
-      <Col l={4} m={6} s={12}>
-        <Card
-          className="recipe-card"
-          horizontal
-          header={<CardTitle image={props.img} />}
-        >
-          <p>{props.title}</p>
-          <a href={props.link} target="blank">
-            View Recipe
-          </a>
-        </Card>
-      </Col>
-      {/* <Col s={2}>
-                <Card header={<CardTitle reveal image={props.img} waves='light' />}
-                    title={props.title}
-                    reveal={<p>Here is some more information about this product that is only revealed once clicked on.</p>}>
-                    <p><a href={props.link}>This is a link</a></p>
+    return (
+        <div>
+            <Col l={6} m={6} s={12}>
+                <Card
+                    className="recipe-card"
+                    horizontal
+                    header={<CardTitle image={props.img} />}
+                >
+                    <p>{props.title}</p>
+                    <a href={props.link} target="blank">
+                        View Recipe
+                    </a>
+
+                    <Modal
+                        header='Recipe Ingredients'
+                        trigger={<Button>Ingredients</Button>}>
+                        <ul>
+                        {props.ingredients.map((ingredient) => (
+                            <li>{ingredient}</li>
+                        ))}
+                        </ul>
+                        <Button>Add Ingredients to List</Button>
+                    </Modal>
                 </Card>
-            </Col> */}
-    </div>
-  );
+            </Col>
+        </div>
+    );
 };
 
 export default Recipe;
