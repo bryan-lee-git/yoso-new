@@ -15,6 +15,6 @@ router
   .route("/:id")
   .get(ListController.findById)
   .put(ListController.update)
-  .delete(ListController.remove);
+  .delete(ListController.destroy);
 
 module.exports = router;

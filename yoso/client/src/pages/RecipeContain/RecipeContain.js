@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import Recipe from "../../components/Recipe";
-import { Container, Row, Col } from "react-materialize";
+import { Container, Row, Col, Icon, Button } from "react-materialize";
 import Yummly from "../../utilities/RecipeAPI";
 import RecipeSearch from "../../components/RecipeSearch";
+import { Link } from "react-router-dom";
 
 class RecipeContain extends Component {
   state = {
@@ -42,6 +43,16 @@ class RecipeContain extends Component {
       <Container className="center-align">
         <br />
         <Row>
+          <Col s={3}>
+            <Link to="/home">
+              <br />
+              <br />
+              <br />
+              <Button>
+                <Icon>arrow_back</Icon>
+              </Button>
+            </Link>
+          </Col>
           <Col s={12}>
             <h1 className="white-text fade-in">FIND RECIPES</h1>
           </Col>

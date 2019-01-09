@@ -49,7 +49,7 @@ db.Pantry = require("./Pantry")(sequelize, Sequelize);
 db.Users.hasMany(db.List);
 db.Pantry.belongsTo(db.Users);
 db.Pantry.hasMany(db.Purchases);
-db.List.hasMany(db.ListItems);
+db.List.hasMany(db.ListItems, { onDelete: "cascade", hooks: true });
 db.ListItems.belongsTo(db.Pantry);
 
 module.exports = db;

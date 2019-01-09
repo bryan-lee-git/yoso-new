@@ -1,50 +1,18 @@
 import React, { Component } from "react";
-import {
-  Card,
-  Container,
-  Row,
-  Col,
-  Autocomplete,
-  Input,
-  Button,
-  Table,
-  Icon
-} from "react-materialize";
-import ItemAPI from "../utilities/ItemAPI";
+import { Card, Row, Col, Table, Icon } from "react-materialize";
 
 class ShowItems extends Component {
-  constructor() {
-    super();
-    this.state = {
-      list: []
-    };
-  }
-
-  componentDidMount() {
-    ItemAPI.getItems(this.props.currentList.id).then(res =>
-      this.setState({
-        list: res.data
-      })
-    );
-  }
-
-  handleRemoveItem = event => {
-    const index = event.target.dataset.index;
-    const newItems = this.state.items;
-    newItems.splice(index, 1);
-    this.setState({ items: newItems });
-  };
   render() {
-    console.log(`inside showitems, here's props: `, this.props.currentList.id);
-
+    console.log(`inside show items, here's this: `, this);
+    console.log(`inside show items, here's the props: `, this.props);
     return (
       <div>
         <Row>
           <Col s={12}>
             <Card className="animate-up-3">
               <Row>
-                <h2>{this.props.currentList.name}</h2>
-                {this.state.list.length > 0 ? (
+                <h2>{this.props.name}</h2>
+                {this.props.currentList.length > 0 ? (
                   <Table className="striped highlight centered">
                     <thead>
                       <tr>
@@ -55,12 +23,12 @@ class ShowItems extends Component {
                       </tr>
                     </thead>
                     <tbody>
-                      {this.state.list.map((item, index) => (
+                      {this.props.currentList.map((item, index) => (
                         <tr key={index}>
                           <td>{item.name}</td>
                           <td>{item.unitSize}</td>
                           <td>{item.quantity}</td>
-                          <td onClick={this.handleRemoveItem}>
+                          <td onClick={this.props.onClick}>
                             <Icon data-index={index}>delete_forever</Icon>
                           </td>
                         </tr>
