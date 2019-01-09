@@ -19,7 +19,7 @@ class Waste extends Component {
               </Button>
             </Link>
           </Col>
-          <Col s={12}>
+          <Col s={6}>
             <h1 className="white-text fade-in">WASTE LESS!</h1>
           </Col>
         </Row>
