@@ -11,19 +11,17 @@ import {
   Icon,
   Table
 } from "react-materialize";
-import ShowItems from "../../components/ListComponents/ShowItems";
 import ListAPI from "../../utilities/ListAPI";
 import ItemAPI from "../../utilities/ItemAPI";
 import { terms } from "../../utilities/ItemTerms";
 import { MyContext } from "../../App";
 
 export default class NewList extends Component {
-  
   state = { items: [], terms: terms, redirect: false };
-
 
   handleChange = e => {
     e.preventDefault();
+
     const { name, value } = e.target;
     console.log(`inside handleChange, name: ${name} and value: ${value}`);
     if (value) {
@@ -34,7 +32,6 @@ export default class NewList extends Component {
       this.setState({ [name]: capName });
     }
   };
-
   handleAutocomplete = value => {
     console.log(`inside handleAutocomplete, value: ${value}`);
     const capName = value.replace(
@@ -46,6 +43,7 @@ export default class NewList extends Component {
 
   handleNewItem = e => {
     e.preventDefault();
+
     const newItem = {
       name: this.state.name,
       unitSize: this.state.unitSize,
@@ -88,26 +86,23 @@ export default class NewList extends Component {
   };
 
   render() {
+    console.log(
+      `inside usercomps/userlists render method, here's props:`,
+      this.props
+    );
     if (this.state.redirect) {
-      return <Redirect to={`/mylists`} />;
+      return <Redirect to={`/lists`} />;
     }
     return (
       <MyContext.Consumer>
         {context => {
           return (
-            <Container className="center-align">
+            <React.Fragment>
               <Row>
                 <Col s={12}>
                   <h1 className="white-text fade-in">
                     {!this.state.listName ? "New List" : this.state.listName}
                   </h1>
-                </Col>
-                <Col s={12}>
-                  <Link to="/lists">
-                    <Button className="back-btn">
-                      <Icon>arrow_back</Icon>
-                    </Button>
-                  </Link>
                 </Col>
               </Row>
               <Row>
@@ -116,13 +111,17 @@ export default class NewList extends Component {
                     <Input
                       s={12}
                       placeholder="Enter list name here"
+                      label="List Name"
                       name="listName"
                       onChange={this.handleChange}
                     />
                   </Card>
                 </Col>
                 <Col s={12} l={8}>
-                  <Card id="new-item-input" className="z-depth-5 animate-up-2 list-card">
+                  <Card
+                    id="new-item-input"
+                    className="z-depth-5 animate-up-2 list-card"
+                  >
                     <Autocomplete
                       s={4}
                       l={3}
@@ -138,6 +137,7 @@ export default class NewList extends Component {
                       s={4}
                       l={3}
                       placeholder="Unit Size"
+                      label="Unit Size"
                       name="unitSize"
                       onChange={this.handleChange}
                     />
@@ -145,6 +145,7 @@ export default class NewList extends Component {
                       s={4}
                       l={3}
                       placeholder="Quantity"
+                      label="Quantity"
                       name="quantity"
                       onChange={this.handleChange}
                     />
@@ -152,7 +153,8 @@ export default class NewList extends Component {
                       s={12}
                       l={3}
                       className="btn btn-large"
-                      onClick={this.handleNewItem}>
+                      onClick={this.handleNewItem}
+                    >
                       Add Item
                     </Button>
                   </Card>
@@ -191,11 +193,7 @@ export default class NewList extends Component {
                   </Row>
                 </Card>
               </Col>
-              <ShowItems
-                currentList={this.state.items}
-                name={this.state.listName}
-                onClick={this.handleRemoveItem}
-              />
+
               <Row className="btn-row">
                 <Button
                   id="save-list"
@@ -207,7 +205,7 @@ export default class NewList extends Component {
                   Save List
                 </Button>
               </Row>
-            </Container>
+            </React.Fragment>
           );
         }}
       </MyContext.Consumer>

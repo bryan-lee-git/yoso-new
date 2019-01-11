@@ -50,7 +50,7 @@ class SignIn extends Component {
           <form>
             <Container>
               <Card id="signin-form" className="rounded animate-up z-depth-4">
-                <h5 className="fade-in">ENTER A VALID EMAIL AND PASSWORD.</h5>
+                <h5 className="fade-in">ENTER A VALID EMAIL AND PASSWORD</h5>
                 <br />
                 <Row>
                   <Col s={12} l={12}>

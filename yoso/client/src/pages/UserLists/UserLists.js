@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ShowItems from "../../components/ShowItems";
+import ShowItems from "../../components/ListComponents/ShowItems";
 import { MyContext } from "../../App";
 import {
   Collapsible,
@@ -16,6 +16,7 @@ import ItemAPI from "../../utilities/ItemAPI";
 
 export default class UserLists extends Component {
   state = {};
+
   handleDeleteList = (e, userId, listId, cb) => {
     e.preventDefault();
     console.log(
@@ -32,13 +33,17 @@ export default class UserLists extends Component {
   };
   getItems = id => {
     ItemAPI.getItems(id).then(res => {
-      console.log(`From getlists at app.js, here's the user's lists: `, res);
+      console.log(`From getlists at userLists, here's the user's lists: `, res);
       this.setState({
         items: res.data
       });
     });
   };
   render() {
+    console.log(
+      `inside the render method of userlists, here's props: `,
+      this.props
+    );
     return (
       <MyContext.Consumer>
         {context => {
@@ -52,24 +57,34 @@ export default class UserLists extends Component {
           const lists = context.state.lists.map((list, index) => (
             <Collapsible key={index} accordion defaultActiveKey={1}>
               <CollapsibleItem header={list.name}>
-                <Button
-                  onClick={e =>
-                    this.handleDeleteList(
-                      e,
-                      context.state.id,
-                      list.id,
-                      context.state.getLists
-                    )
-                  }
-                >
-                  {" "}
-                  <Icon data-index={index}>delete_forever</Icon>
-                  <br />
-                </Button>
+                <Col s={3}>
+                  <Button
+                    onClick={e =>
+                      this.handleDeleteList(
+                        e,
+                        context.state.id,
+                        list.id,
+                        context.state.getLists
+                      )
+                    }
+                  >
+                    {" "}
+                    <Icon data-index={index}>delete_forever</Icon>
+                    <br />
+                  </Button>
+                </Col>
+                <Col s={3} offset="6" className="right">
+                  <Button>
+                    <Icon data-index={index}>send</Icon>
+                  </Button>
+                </Col>
+
                 <ShowItems
                   key={list.id}
+                  listId={list.id}
                   name={list.name}
-                  currentList={() => this.getItems(list.id)}
+                  currentList={list.lists}
+                  getItems={this.getItems}
                   onClick={e =>
                     this.handleDeleteItem(
                       e,

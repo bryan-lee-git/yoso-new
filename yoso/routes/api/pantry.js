@@ -7,6 +7,14 @@ router
   .get(PantryController.findAll)
   .post(PantryController.findOrCreate);
 
+// Matches with "/api/pantry/all"
+
+router.route("/all").post(PantryController.findAll);
+
+// Matches with "/api/pantry/name"
+
+router.route("/name").post(PantryController.findOne);
+
 // Matches with "/api/pantry/:id"
 router
   .route("/:id")
