@@ -9,7 +9,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     description: {
       type: DataTypes.TEXT,
-      allowNull: false,
+      allowNull: true,
       validate: {
         len: [1, 300]
       }
@@ -22,17 +22,10 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: true
     },
     frequency: {
-      type: DataTypes.ENUM(
-        "WEEKLY",
-        "BIWEEKLY",
-        "MONTHLY",
-        "QUARTERLY",
-        "YEARLY",
-        "PRN"
-      )
+      type: DataTypes.INTEGER
     },
     shelfLife: {
-      type: DataTypes.ENUM("WEEK", "BIWEEK", "MONTH", "QUARTER", "YEAR", "NONE")
+      type: DataTypes.INTEGER
     },
     category: {
       type: DataTypes.STRING,

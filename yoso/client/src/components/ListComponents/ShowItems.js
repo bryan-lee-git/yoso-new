@@ -1,7 +1,17 @@
 import React, { Component } from "react";
 import { Card, Row, Col, Table, Icon } from "react-materialize";
+import ItemAPI from "../../utilities/ItemAPI";
 
 class ShowItems extends Component {
+  state = {
+    items: []
+  };
+  componentDidMount() {
+    ItemAPI.getItems(this.props.listId).then(res => {
+      console.log(`From getlists at userLists, here's the user's items: `, res);
+      this.setState({ items: res.data });
+    });
+  }
   render() {
     console.log(`inside show items, here's this: `, this);
     console.log(`inside show items, here's the props: `, this.props);
@@ -12,7 +22,7 @@ class ShowItems extends Component {
             <Card className="animate-up-3">
               <Row>
                 <h2>{this.props.name}</h2>
-                {this.props.currentList.length > 0 ? (
+                {this.state.items.length > 0 ? (
                   <Table className="striped highlight centered">
                     <thead>
                       <tr>
@@ -23,8 +33,8 @@ class ShowItems extends Component {
                       </tr>
                     </thead>
                     <tbody>
-                      {this.props.currentList.map((item, index) => (
-                        <tr key={index}>
+                      {this.state.items.map((item, index) => (
+                        <tr key={item.id}>
                           <td>{item.name}</td>
                           <td>{item.unitSize}</td>
                           <td>{item.quantity}</td>

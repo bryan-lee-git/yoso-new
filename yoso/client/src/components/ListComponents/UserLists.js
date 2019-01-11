@@ -86,25 +86,19 @@ export default class NewList extends Component {
   };
 
   render() {
+    console.log(
+      `inside usercomps/userlists render method, here's props:`,
+      this.props
+    );
     if (this.state.redirect) {
-      return <Redirect to={`/mylists`} />;
+      return <Redirect to={`/lists`} />;
     }
     return (
       <MyContext.Consumer>
         {context => {
           return (
-            <Container className="center-align">
+            <React.Fragment>
               <Row>
-                <Col s={3}>
-                  <Link to="/lists">
-                    <br />
-                    <br />
-                    <br />
-                    <Button>
-                      <Icon>arrow_back</Icon>
-                    </Button>
-                  </Link>
-                </Col>
                 <Col s={12}>
                   <h1 className="white-text fade-in">
                     {!this.state.listName ? "New List" : this.state.listName}
@@ -211,7 +205,7 @@ export default class NewList extends Component {
                   Save List
                 </Button>
               </Row>
-            </Container>
+            </React.Fragment>
           );
         }}
       </MyContext.Consumer>

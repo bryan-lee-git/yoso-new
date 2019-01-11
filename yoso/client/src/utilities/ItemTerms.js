@@ -289,3 +289,82 @@ export const terms = {
   "Toilet Bowl Cleaners": null,
   Towels: null
 };
+
+const termKeys = Object.keys(terms);
+
+const nonVeganSearch = /beef|milk|chicken|steak|turkey|ham|pork|crab|shrimp|egg|yogurt|veal|cream|fish|scallops|dairy|tacos|bacon/gi;
+
+const stableSearch = /pasta|beans|rice|sauce|baking|sugar|mix(?!ed)|cereal|potato|squash|oatmeal|cocoa|cornstarch|jello|macaroni|drinks|coffee|pretzels|raisins|candy|olive|spray|syrup|honey|vienna|flour|food|tomato paste|butter|margarine|water|tea|pop|nut|juice|bever|snacks|oils|dinn/i;
+
+const breadSearch = /bread|bun|bisc|rolls|tortil|crackers|cookies/i;
+
+const condimentsSearch = /dressing|ketchup|catsup|mayonaise|salsa|mustard|jelly|horse|condi|mayon|worce/i;
+
+const spicesSearch = /salt|pepper(?!s)|oregano|paprika|parsley|nutmeg|powder|cinnamon|extract|season|ginger|green/i;
+
+const fresh = termKeys.filter(term => term.includes("Fresh"));
+
+const produce = fresh.map(term => term.replace("Fresh", "").trim());
+
+const soup = termKeys.filter(term => term.includes("Soup"));
+
+const cans = termKeys.filter(term => term.includes("Canned"));
+
+const frozen = termKeys.filter(term => term.includes("Frozen"));
+
+const preVegan = termKeys.filter(term => term.search(nonVeganSearch) > -1);
+
+const preVegan2 = preVegan.filter(
+  term => term.search(/soup|sham|bun|canned/i) === -1
+);
+
+const nonVegan = preVegan2.filter(
+  term => term.search(/frozen|first|shav/i) === -1
+);
+
+const bread = termKeys.filter(term => term.search(breadSearch) > -1);
+
+const cheese = termKeys.filter(term => term.search(/cheese(?!\sdress)/i) > -1);
+
+const prestable = termKeys.filter(term => term.search(stableSearch) > -1);
+
+const stable = prestable.filter(
+  term => term.search(/canned|frozen|soup|baby|sour|petro/i) === -1
+);
+
+const canned = [...cans, ...soup];
+
+const condiments = termKeys.filter(term => term.search(condimentsSearch) > -1);
+
+const prespices = termKeys.filter(term => term.search(spicesSearch) > -1);
+
+const spices = prespices.filter(term => term.search(/canned/i) === -1);
+
+const groceries = [
+  ...frozen,
+  ...nonVegan,
+  ...bread,
+  ...cheese,
+  ...stable,
+  ...canned,
+  ...condiments,
+  ...spices,
+  ...produce
+];
+
+const house = termKeys.filter(term => !groceries.includes(term));
+
+const household = house.filter(term => term.search(/veg|fresh/i) === -1);
+
+export const categories = [
+  nonVegan,
+  bread,
+  cheese,
+  stable,
+  condiments,
+  produce,
+  canned,
+  spices,
+  frozen,
+  household
+];

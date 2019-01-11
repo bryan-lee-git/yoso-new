@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Col, Card, Row } from "react-materialize";
 import { MyContext } from "../../src/App";
 import Moment from "react-moment";
+
+import WasteSimData from "./WasteSimData";
 //import "moment-timezone";
 
 class WasteItem extends Component {
@@ -10,6 +12,7 @@ class WasteItem extends Component {
     return (
       <MyContext.Consumer>
         {context => {
+          console.log(`inside wasteitem, here's the context: `, context);
           return (
             <Row>
               <Col s={4} offset="3">
@@ -31,9 +34,7 @@ class WasteItem extends Component {
                     </Moment>
                   </h5>
                 </Card>
-                <Card className="z-depth-3">
-                  <h5>DATA</h5>
-                </Card>
+                <WasteSimData UserId={context.state.id} />
               </Col>
             </Row>
           );

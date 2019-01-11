@@ -10,7 +10,7 @@ import Landing from "./pages/Landing";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Home from "./pages/Home";
-import MyLists from "./pages/MyLists";
+import Lists from "./pages/Lists";
 import UserLists from "./pages/UserLists";
 import NewList from "./pages/NewList";
 import Pantry from "./pages/Pantry";
@@ -223,7 +223,7 @@ class App extends Component {
               <PrivateRoute
                 exact
                 path="/lists"
-                component={MyLists}
+                component={Lists}
                 lists={this.state.lists}
               />
               <PrivateRoute exact path="/newlist" component={NewList} />

@@ -26,7 +26,8 @@ export default {
         name: data.name,
         unitSize: data.unitSize,
         quantity: data.quantity,
-        ListId: data.ListId
+        ListId: data.ListId,
+        PantryId: data.PantryId
       }
     });
   },

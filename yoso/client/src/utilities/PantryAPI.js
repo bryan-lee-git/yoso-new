@@ -2,16 +2,33 @@ import axios from "axios";
 
 export default {
   //Get all Pantry items.
-  getPantry: function() {
-    return axios.get(`/api/pantry`);
+  getPantry: function(UserId) {
+    return axios.post({
+      url: `/api/pantry/all`,
+      data: UserId
+    });
   },
   // Get a specific Pantry item.
-  getPantryItem: function(id) {
+  getPantryItembyId: function(id) {
     return axios.get(`/api/pantry/${id}`);
   },
+  getPantryItem: function(UserId, name) {
+    const data = { UserId: UserId, name: name };
+    console.log(
+      `inside pantryapi, get pantryitem, here's UserId: ${UserId} and name: ${name}`
+    );
+    return axios.post({
+      url: `/api/pantry/name`,
+      data: data
+    });
+  },
   // Create a new Pantry Item.
-  findOrCreatePantryItem: function() {
-    return axios.post(`/api/pantry`);
+  findOrCreatePantryItem: function(data) {
+    return axios({
+      method: "post",
+      url: `/api/pantry`,
+      data: data
+    });
   },
   // Edit a specific Pantry item.
   updatePantryItem: function(id) {
