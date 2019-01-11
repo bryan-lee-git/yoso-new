@@ -1,24 +1,12 @@
 import React from "react";
-import { Container, Row, Col, Card, Icon, Button } from "react-materialize";
-import { Link } from "react-router-dom";
+import { Container, Row, Col, Card, } from "react-materialize";
 
 const About = () => {
   return (
     <Container className="center-align">
+    <br/>
       <Row>
-        <br />
-        <br />
-        <Col s={1}>
-          <Link to="/home">
-            <br />
-            <br />
-            <br />
-            <Button>
-              <Icon>arrow_back</Icon>
-            </Button>
-          </Link>
-        </Col>
-        <Col s={6} offset="s2">
+        <Col s={8} offset="s2">
           <img
             id="home-logo"
             alt="yoso logo"
@@ -26,7 +14,6 @@ const About = () => {
           />
         </Col>
       </Row>
-      <br />
       <Row className="btn-row">
         <Col className="animate-up" s={12} m={12} l={4}>
           <Card className="z-depth-4 about-card" id="what-card">

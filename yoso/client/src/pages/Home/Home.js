@@ -12,7 +12,7 @@ const Home = () => {
             <Row>
               <br />
               <br />
-              <Col s={12} l={6} offset="l3">
+              <Col s={12} l={8} offset="l2">
                 <img
                   id="home-logo"
                   alt="yoso logo"
@@ -29,10 +29,7 @@ const Home = () => {
             <Row className="btn-row">
               <Col s={6} m={4} l={2}>
                 <Link to="/lists">
-                  <Button
-                    id="home-list"
-                    className="animate-up home-btn z-depth-5 btn-large"
-                  >
+                  <Button id="home-list" className="animate-up home-btn z-depth-5 btn-large">
                     LISTS
                   </Button>
                 </Link>

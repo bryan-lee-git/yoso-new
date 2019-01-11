@@ -7,7 +7,7 @@ const Landing = () => {
         <Container className="center-align">
             <Row>
                 <br/><br/>
-                <Col s={12} l={6} offset="l3">
+                <Col s={12} l={8} offset="l2">
                     <img id="home-logo" alt="yoso logo" src="./img/Yoso-Logo-Large-Text-White-Tag-Shadow.svg"></img>            
                 </Col>
             </Row>

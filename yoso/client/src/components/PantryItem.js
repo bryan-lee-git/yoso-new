@@ -5,7 +5,7 @@ const PantryItem = () => {
   return (
     <div>
       <Row>
-        <Col s={8} offset="s2">
+        <Col s={12}>
           <Card className='blue-grey darken-1 z-depth-4' textClassName='white-text'>
             <Table>
               <tbody>

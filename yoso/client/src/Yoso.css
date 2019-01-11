@@ -10,6 +10,14 @@ body {
   font-family: "Work Sans", sans-serif;
 }
 
+.input-field {
+  margin-top: 0;
+}
+
+.back-btn {
+  width: 100%;
+}
+
 .card-header-text {
   font-weight: 900;
   color: #00bf0d !important;
@@ -35,8 +43,8 @@ h4 {
 }
 
 .card-image {
-    background-color: #00BF0D;
-    border-radius: 10px 0px 0px 10px;
+  background-color: #00BF0D;
+  border-radius: 10px 0px 0px 10px;
 
 }
 
@@ -67,25 +75,20 @@ footer.page-footer {
   background-color: #007f09;
   border-radius: 10px;
   color: white;
-  -webkit-box-shadow: inset -1px 0px 0px rgb(1, 148, 11),
-    0px 5px 0px 0px rgb(1, 148, 11), 0px 7px 5px #007f09;
-  -moz-box-shadow: inset -1px 0px 0px rgb(1, 148, 11),
-    0px 5px 0px 0px rgb(1, 148, 11), 0px 7px 5px #007f09;
-  box-shadow: inset -1px 0px 0px rgb(1, 148, 11),
-    0px 5px 0px 0px rgb(1, 148, 11), 0px 7px 5px #007f09;
+  -webkit-box-shadow: inset -1px 0px 0px rgb(1, 148, 11), 0px 5px 0px 0px rgb(1, 148, 11), 0px 7px 5px #007f09;
+  -moz-box-shadow: inset -1px 0px 0px rgb(1, 148, 11), 0px 5px 0px 0px rgb(1, 148, 11), 0px 7px 5px #007f09;
+  box-shadow: inset -1px 0px 0px rgb(1, 148, 11), 0px 5px 0px 0px rgb(1, 148, 11), 0px 7px 5px #007f09;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
 }
 
 .btn:hover,
-.btn-focus {
+.btn:focus,
+.btn:active {
   background-color: #00bf0d;
-  -webkit-box-shadow: inset 0px 1px 0px rgb(1, 148, 11),
-    0px 5px 0px 0px rgb(1, 148, 11), 0px 5px 5px #007f09;
-  -moz-box-shadow: inset 0px 1px 0px rgb(1, 148, 11),
-    0px 5px 0px 0px rgb(1, 148, 11), 0px 5px 5px #007f09;
-  box-shadow: inset 0px 1px 0px rgb(1, 148, 11), 0px 5px 0px 0px rgb(1, 148, 11),
-    0px 5px 5px #007f09;
+  -webkit-box-shadow: inset 0px 1px 0px rgb(1, 148, 11), 0px 5px 0px 0px rgb(1, 148, 11), 0px 5px 5px #007f09;
+  -moz-box-shadow: inset 0px 1px 0px rgb(1, 148, 11), 0px 5px 0px 0px rgb(1, 148, 11), 0px 5px 5px #007f09;
+  box-shadow: inset 0px 1px 0px rgb(1, 148, 11), 0px 5px 0px 0px rgb(1, 148, 11), 0px 5px 5px #007f09;
   -moz-border-radius: 10px;
   border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -101,8 +104,7 @@ footer.page-footer {
 }
 
 .animate-down {
-  animation: fadeInDown-radium-animation-97401d6b 1s ease 0s 1 normal none
-    running;
+  animation: fadeInDown-radium-animation-97401d6b 1s ease 0s 1 normal none running;
 }
 
 .animate-up {
@@ -110,18 +112,15 @@ footer.page-footer {
 }
 
 .animate-up-2 {
-  animation: fadeInUp-radium-animation-97401d6b 1.25s ease 0s 1 normal none
-    running;
+  animation: fadeInUp-radium-animation-97401d6b 1.25s ease 0s 1 normal none running;
 }
 
 .animate-up-3 {
-  animation: fadeInUp-radium-animation-97401d6b 1.5s ease 0s 1 normal none
-    running;
+  animation: fadeInUp-radium-animation-97401d6b 1.5s ease 0s 1 normal none running;
 }
 
 .animate-up-4 {
-  animation: fadeInUp-radium-animation-97401d6b 1.75s ease 0s 1 normal none
-    running;
+  animation: fadeInUp-radium-animation-97401d6b 1.75s ease 0s 1 normal none running;
 }
 
 .animate-up-5 {
@@ -129,8 +128,7 @@ footer.page-footer {
 }
 
 .animate-up-6 {
-  animation: fadeInUp-radium-animation-97401d6b 2.25s ease 0s 1 normal none
-    running;
+  animation: fadeInUp-radium-animation-97401d6b 2.25s ease 0s 1 normal none running;
 }
 
 @keyframes fadeInUp-radium-animation-97401d6b {
@@ -180,8 +178,8 @@ footer.page-footer {
 .signin-btn,
 .signup-btn,
 .recipe-btn {
-    width: 95%;
-    min-height: 50px;
+  width: 95%;
+  min-height: 50px;
 }
 
 #new-list-btn {
@@ -192,13 +190,9 @@ footer.page-footer {
 #home-logo,
 .fade-in {
   -webkit-animation: fadein 1.5s forwards;
-  /* Safari, Chrome and Opera > 12.1 */
   -moz-animation: fadein 1.5s forwards;
-  /* Firefox < 16 */
   -ms-animation: fadein 1.5s forwards;
-  /* Internet Explorer */
   -o-animation: fadein 1.5s forwards;
-  /* Opera < 12.1 */
   animation: fadein 1.5s forwards;
 }
 
@@ -230,6 +224,10 @@ footer.page-footer {
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
+}
+
+#signup-form, #account-form {
+  padding-top: 10px;
 }
 
 #home-list,
@@ -359,7 +357,7 @@ footer.page-footer {
   color: #000 !important;
 }
 
-.input-field input:focus + label {
+.input-field input:focus+label {
   color: #007f09 !important;
 }
 
@@ -395,21 +393,21 @@ input[type="range"]::-ms-thumb {
 }
 
 /***** These are to edit the thumb and the text inside the thumb *****/
-input[type="range"] + .thumb {
+input[type="range"]+.thumb {
   background-color: #dedede;
 }
 
-input[type="range"] + .thumb.active .value {
+input[type="range"]+.thumb.active .value {
   color: #007f09 !important;
 }
 
-[type="radio"]:checked + span:after,
-[type="radio"].with-gap:checked + span:after {
+[type="radio"]:checked+span:after,
+[type="radio"].with-gap:checked+span:after {
   background-color: #007f09 !important;
 }
 
-[type="radio"]:checked + span:after,
-[type="radio"].with-gap:checked + span:before,
-[type="radio"].with-gap:checked + span:after {
+[type="radio"]:checked+span:after,
+[type="radio"].with-gap:checked+span:before,
+[type="radio"].with-gap:checked+span:after {
   border: 2px solid #007f09 !important;
 }

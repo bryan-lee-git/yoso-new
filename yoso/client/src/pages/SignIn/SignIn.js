@@ -47,9 +47,8 @@ class SignIn extends Component {
             </Col>
           </Row>
 
-          <Col s={12} m={12} />
           <form>
-            <Container className="btn-row">
+            <Container>
               <Card id="signin-form" className="rounded animate-up z-depth-4">
                 <h5 className="fade-in">ENTER A VALID EMAIL AND PASSWORD</h5>
                 <br />
@@ -61,8 +60,7 @@ class SignIn extends Component {
                       label="Email"
                       type="email"
                       name="email"
-                      validate
-                    >
+                      validate>
                       <Icon>email</Icon>
                     </Input>
                   </Col>
@@ -73,43 +71,51 @@ class SignIn extends Component {
                       label="Password"
                       type="password"
                       name="password"
-                      validate
-                    >
+                      validate>
                       <Icon>lock</Icon>
                     </Input>
                   </Col>
                 </Row>
                 <Row>
                   {this.state.email && this.state.password ? (
-                    <Col s={12} m={12}>
-                      <Input
-                        s={12}
-                        onClick={this.handleSignIn}
-                        className="signin-btn btn btn-large"
-                        type="submit"
-                      />
-                    </Col>
+                    <div>
+                      <Col s={6}>
+                        <Input
+                          s={12}
+                          onClick={this.handleSignIn}
+                          className="signin-btn btn btn-large"
+                          type="submit"
+                        />
+                      </Col>
+                      <Col s={6}>
+                        <Link to={this.props.signUpPath}>
+                          <Button className="signin-btn btn btn-large">
+                            SIGN UP
+                          </Button>
+                        </Link>
+                      </Col>
+                    </div>
                   ) : (
-                    <Col s={12} m={12}>
-                      <Input
-                        s={12}
-                        onClick={this.handleSignIn}
-                        className="signin-btn btn btn-large"
-                        type="submit"
-                        disabled
-                      />
-                    </Col>
+                    <div>
+                      <Col s={6}>
+                        <Input
+                          s={12}
+                          onClick={this.handleSignIn}
+                          className="signin-btn btn btn-large"
+                          type="submit"
+                          disabled
+                        />
+                      </Col>
+                      <Col s={6}>
+                        <Link to={this.props.signUpPath}>
+                          <Button className="signin-btn btn btn-large">
+                            SIGN UP
+                          </Button>
+                        </Link>
+                      </Col>
+                    </div>
                   )}
                 </Row>
-              </Card>
-
-              <Card className="rounded animate-down z-depth-4">
-                <h5 className="fade-in">OR CLICK HERE TO SIGN UP</h5>
-                <Link to={this.props.signUpPath}>
-                  <Button s={6} className="signin-btn btn btn-large">
-                    SIGN UP
-                  </Button>
-                </Link>
               </Card>
             </Container>
           </form>
