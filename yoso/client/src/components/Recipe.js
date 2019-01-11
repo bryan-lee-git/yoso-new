@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Row, Col, CardTitle, Modal, Button } from "react-materialize";
+import { Card, Row, Col, CardTitle, Button } from "react-materialize";
 
 const Recipe = props => {
     return (
@@ -14,10 +14,10 @@ const Recipe = props => {
                     <br/><br/>
                     <Row>
                         <Col s={6}>
-                        <a href={props.link} target="blank"><Button className="recipe-btn">Recipe</Button></a>
+                            <a href={props.link} target="blank"><Button className="recipe-btn">Recipe</Button></a>
                         </Col>
                         <Col s={6}>
-                        <Button className="recipe-btn">Add</Button>
+                            <Button className="recipe-btn">Add</Button>
                         </Col>
                     </Row>
                 </Card>

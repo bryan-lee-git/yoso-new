@@ -13,47 +13,28 @@ const MyLists = () => {
             <Container>
               <Row>
                 <br />
-                <br />
-                <Col s={1}>
-                  <Link to="/home">
-                    <br />
-                    <br />
-                    <br />
-                    <Button>
-                      <Icon>arrow_back</Icon>
-                    </Button>
-                  </Link>
-                </Col>
-                <Col s={6} l={6} offset="l2">
+                <Col s={12} l={8} offset="l2">
                   <img
                     id="home-logo"
                     alt="yoso logo"
                     src="./img/Yoso-Logo-Large-Text-White-Tag-Shadow.svg"
                   />
                 </Col>
+                <Col s={12}>
+                  <Link to="/home">
+                    <Button className="back-btn">
+                      <Icon>arrow_back</Icon>
+                    </Button>
+                  </Link>
+                </Col>
               </Row>
               <Row className="btn-row">
-                <Col s={12}>
-                  <br />
-                  <br />
-                </Col>
                 {context.state.lists.length === 0 ? (
                   <div>
-                    <br />
-                    <br />
-                    <br />
-                    <h2 className="white-text center-align">
-                      You haven't created any lists yet!
-                    </h2>
-                    <br />
-                    <br />
-                    <Col className="animate-up" s={12} l={6}>
+                    <Col className="animate-up" s={12} l={12}>
                       <Link to="/newlist">
-                        <Button
-                          id="new-list"
-                          className="home-btn z-depth-5 btn-large"
-                        >
-                          NEW LIST
+                        <Button id="new-list" className="home-btn z-depth-5 btn-large">
+                          Create Your First List
                         </Button>
                       </Link>
                       <br />
@@ -66,8 +47,7 @@ const MyLists = () => {
                       <Link to="/newlist">
                         <Button
                           id="new-list"
-                          className="home-btn z-depth-5 btn-large"
-                        >
+                          className="home-btn z-depth-5 btn-large">
                           NEW LIST
                         </Button>
                       </Link>
@@ -78,8 +58,7 @@ const MyLists = () => {
                       <Link to="/mylists">
                         <Button
                           id="my-lists"
-                          className="home-btn z-depth-5 btn-large"
-                        >
+                          className="home-btn z-depth-5 btn-large">
                           MY LISTS
                         </Button>
                       </Link>

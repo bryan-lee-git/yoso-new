@@ -17,6 +17,7 @@ import ShowItems from "../../components/ShowItems";
 import { MyContext } from "../../App";
 
 export default class NewList extends Component {
+
   state = {
     items: [],
     terms: terms
@@ -24,7 +25,6 @@ export default class NewList extends Component {
 
   handleChange = e => {
     e.preventDefault();
-
     const { name, value } = e.target;
     console.log(`inside handleChange, name: ${name} and value: ${value}`);
     if (value) {
@@ -35,6 +35,7 @@ export default class NewList extends Component {
       this.setState({ [name]: capName });
     }
   };
+
   handleAutocomplete = value => {
     console.log(`inside handleAutocomplete, value: ${value}`);
     const capName = value.replace(
@@ -48,7 +49,6 @@ export default class NewList extends Component {
 
   handleNewItem = e => {
     e.preventDefault();
-
     const newItem = {
       name: this.state.name,
       unitSize: this.state.unitSize,
@@ -89,20 +89,17 @@ export default class NewList extends Component {
           return (
             <Container className="center-align">
               <Row>
-                <Col s={3}>
-                  <Link to="/lists">
-                    <br />
-                    <br />
-                    <br />
-                    <Button>
-                      <Icon>arrow_back</Icon>
-                    </Button>
-                  </Link>
-                </Col>
                 <Col s={12}>
                   <h1 className="white-text fade-in">
                     {!this.state.listName ? "New List" : this.state.listName}
                   </h1>
+                </Col>
+                <Col s={12}>
+                  <Link to="/lists">
+                    <Button className="back-btn">
+                      <Icon>arrow_back</Icon>
+                    </Button>
+                  </Link>
                 </Col>
               </Row>
               <Row>
@@ -111,22 +108,18 @@ export default class NewList extends Component {
                     <Input
                       s={12}
                       placeholder="Enter list name here"
-                      label="List Name"
                       name="listName"
                       onChange={this.handleChange}
                     />
                   </Card>
                 </Col>
                 <Col s={12} l={8}>
-                  <Card
-                    id="new-item-input"
-                    className="z-depth-5 animate-up-2 list-card"
-                  >
+                  <Card id="new-item-input" className="z-depth-5 animate-up-2 list-card">
                     <Autocomplete
                       s={4}
                       l={3}
                       data={this.state.terms}
-                      placeholder="Name" //label="New Item"
+                      placeholder="Name"
                       onAutocomplete={this.handleAutocomplete}
                       name="name"
                       onChange={this.handleChange}
@@ -135,7 +128,6 @@ export default class NewList extends Component {
                       s={4}
                       l={3}
                       placeholder="Unit Size"
-                      label="Unit Size"
                       name="unitSize"
                       onChange={this.handleChange}
                     />
@@ -143,7 +135,6 @@ export default class NewList extends Component {
                       s={4}
                       l={3}
                       placeholder="Quantity"
-                      label="Quantity"
                       name="quantity"
                       onChange={this.handleChange}
                     />
@@ -151,8 +142,7 @@ export default class NewList extends Component {
                       s={12}
                       l={3}
                       className="btn btn-large"
-                      onClick={this.handleNewItem}
-                    >
+                      onClick={this.handleNewItem}>
                       Add Item
                     </Button>
                   </Card>
@@ -163,13 +153,11 @@ export default class NewList extends Component {
                 name={this.state.listName}
                 onClick={this.handleRemoveItem}
               />
-
               <Row className="btn-row">
                 <Button
                   id="save-list"
                   className="btn btn-large animate-up-4"
-                  onClick={e => this.createList(e, context.state.id)}
-                >
+                  onClick={e => this.createList(e, context.state.id)}>
                   Save List
                 </Button>
               </Row>
