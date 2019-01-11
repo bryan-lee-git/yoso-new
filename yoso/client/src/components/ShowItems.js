@@ -9,7 +9,7 @@ class ShowItems extends Component {
       <div>
         <Row>
           <Col s={12}>
-            <Card className="animate-up-3">
+            <Card className="animate-up-3 z-depth-5">
               <Row>
                 <h2>{this.props.name}</h2>
                 {this.props.currentList.length > 0 ? (

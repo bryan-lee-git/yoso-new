@@ -43,27 +43,24 @@ class RecipeContain extends Component {
       <Container className="center-align">
         <br />
         <Row>
-          <Col s={3}>
+          <Col s={12}>
+            <h1 className="white-text fade-in">FIND RECIPES</h1>
+          </Col>
+          <Col s={12}>
             <Link to="/home">
-              <br />
-              <br />
-              <br />
-              <Button>
+              <Button className="back-btn">
                 <Icon>arrow_back</Icon>
               </Button>
             </Link>
           </Col>
-          <Col s={12}>
-            <h1 className="white-text fade-in">FIND RECIPES</h1>
-          </Col>
         </Row>
-        <Card className="rounded z-depth-5 btn-row">
+        <Card className="rounded z-depth-5 animate-up">
         <RecipeSearch
           handleInputChange={this.handleInputChange}
           handleFormSubmit={this.handleFormSubmit}
         />
         </Card>
-        <div className="animate-up btn-row">
+        <div className="animate-up-2 btn-row">
           {this.state.response ? (
             <Row>
               {this.state.response.map((recipe, index) => (

@@ -37,18 +37,15 @@ class Account extends Component {
             <Container className="center-align">
               <br />
               <Row>
-                <Col s={3}>
+                <Col s={12}>
+                  <h1 className="white-text fade-in">YOUR ACCOUNT INFO</h1>
+                </Col>
+                <Col s={12}>
                   <Link to="/home">
-                    <br />
-                    <br />
-                    <br />
-                    <Button>
+                    <Button className="back-btn">
                       <Icon>arrow_back</Icon>
                     </Button>
                   </Link>
-                </Col>
-                <Col s={12}>
-                  <h1 className="white-text fade-in">YOUR ACCOUNT INFO</h1>
                 </Col>
               </Row>
               <form>
