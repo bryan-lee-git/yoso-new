@@ -88,7 +88,8 @@ class App extends Component {
             city,
             state,
             zip,
-            id: response.data.id
+            id: response.data.id,
+            loggedIn: true
           });
           if (cb) cb();
         } else console.log("Could not sign up! Please try again.");
@@ -122,7 +123,8 @@ class App extends Component {
                 city: response.data.city,
                 state: response.data.state,
                 zip: response.data.zip,
-                id: response.data.id
+                id: response.data.id,
+                loggedIn: true
               });
               this.getLists(this.state.id);
               if (cb) cb();
@@ -162,7 +164,6 @@ class App extends Component {
             city,
             state,
             zip,
-
             loggedIn: true
           });
 

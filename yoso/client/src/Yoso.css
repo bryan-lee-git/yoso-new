@@ -34,6 +34,12 @@ h4 {
   min-height: 115px;
 }
 
+.card-image {
+    background-color: #00BF0D;
+    border-radius: 10px 0px 0px 10px;
+
+}
+
 a.brand-logo {
   margin-left: 20px;
 }
@@ -172,9 +178,10 @@ footer.page-footer {
 }
 
 .signin-btn,
-.signup-btn {
-  width: 95%;
-  min-height: 50px;
+.signup-btn,
+.recipe-btn {
+    width: 95%;
+    min-height: 50px;
 }
 
 #new-list-btn {
