@@ -10,16 +10,7 @@ export default props => {
       <Row>
         <br />
         <br />
-        <Col s={1}>
-          <Link to={goto}>
-            <br />
-            <br />
-            <br />
-            <Button>
-              <Icon>arrow_back</Icon>
-            </Button>
-          </Link>
-        </Col>
+
         <Col s={6} l={6} offset="l2">
           <img
             id="home-logo"

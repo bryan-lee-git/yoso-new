@@ -5,14 +5,14 @@ import { Row, Col, Button, Icon } from "react-materialize";
 export default props => {
   const { goto, page, handleSwitch } = props;
   return (
-    <Row>
+    <Row className="animate-down">
       <Col s={12}>
         {handleSwitch ? (
-        <Link to={goto} onClick={e => handleSwitch(e, page)}>
-          <Button className="back-btn">
-            <Icon>arrow_back</Icon>
-          </Button>
-        </Link>
+          <Link to={goto} onClick={e => handleSwitch(e, page)}>
+            <Button className="back-btn">
+              <Icon>arrow_back</Icon>
+            </Button>
+          </Link>
         ) : (
           <Link to={goto}>
             <Button className="back-btn">

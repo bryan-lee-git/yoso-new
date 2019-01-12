@@ -92,17 +92,17 @@ export default class NewList extends Component {
     return (
       <Container className="center-align">
         <Row>
-          <BackBtn
-            goto="/lists"
-            handleSwitch={this.props.handleSwitch}
-            page={0}
-          />
           <Col s={12}>
             <h1 className="white-text fade-in">
               {!this.state.listName ? "New List" : this.state.listName}
             </h1>
           </Col>
         </Row>
+        <BackBtn
+          goto="/lists"
+          handleSwitch={this.props.handleSwitch}
+          page={0}
+        />
         <Row>
           <Col s={12} l={4}>
             <Card className="z-depth-5 animate-up list-card">
