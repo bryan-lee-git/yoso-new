@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import Recipe from "../../components/RecipeComponents/Recipe";
-import { Container, Row, Col, Icon, Button, Card } from "react-materialize";
+import { Container, Row, Col, Card } from "react-materialize";
 import Yummly from "../../utilities/RecipeAPI";
 import RecipeSearch from "../../components/RecipeComponents/RecipeSearch";
-import { Link } from "react-router-dom";
 import BackBtn from "../../components/BackBtn";
 
 class RecipeContain extends Component {
+
   state = {
     query: "",
     response: "",

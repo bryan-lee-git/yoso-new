@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Redirect, Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import {
   Container,
   Row,
@@ -57,7 +57,7 @@ class Account extends Component {
                         s={12}
                         l={6}
                         onChange={this.handleInputChange}
-                        defaultValue={context.state.first}
+                        defaultValue={context.user.first}
                         type="text"
                         label="First Name"
                         name="first"
@@ -67,7 +67,7 @@ class Account extends Component {
                         s={12}
                         l={6}
                         onChange={this.handleInputChange}
-                        defaultValue={context.state.last}
+                        defaultValue={context.user.last}
                         type="text"
                         label="Last Name"
                         name="last"
@@ -81,7 +81,7 @@ class Account extends Component {
                         s={12}
                         l={6}
                         onChange={this.handleInputChange}
-                        defaultValue={context.state.street}
+                        defaultValue={context.user.street}
                         offset="s3"
                         type="text"
                         label="Street Address"
@@ -92,7 +92,7 @@ class Account extends Component {
                         s={12}
                         l={6}
                         onChange={this.handleInputChange}
-                        defaultValue={context.state.city}
+                        defaultValue={context.user.city}
                         offset="s3"
                         type="text"
                         label="City"
@@ -107,7 +107,7 @@ class Account extends Component {
                         s={12}
                         l={6}
                         onChange={this.handleInputChange}
-                        defaultValue={context.state.state}
+                        defaultValue={context.user.state}
                         offset="s3"
                         type="text"
                         label="State"
@@ -118,7 +118,7 @@ class Account extends Component {
                         s={12}
                         l={6}
                         onChange={this.handleInputChange}
-                        defaultValue={context.state.zip}
+                        defaultValue={context.user.zip}
                         offset="s3"
                         type="number"
                         label="Zip Code"
@@ -132,7 +132,7 @@ class Account extends Component {
                       <Input
                         s={12}
                         onChange={this.handleInputChange}
-                        defaultValue={context.state.email}
+                        defaultValue={context.user.email}
                         label="Email"
                         type="email"
                         name="email"
