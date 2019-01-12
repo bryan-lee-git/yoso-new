@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 import { Col, Card, Row } from "react-materialize";
-
 import Moment from "react-moment";
-
 import WasteSimData from "./WasteSimData";
-//import "moment-timezone";
 
 class WasteItem extends Component {
   render() {

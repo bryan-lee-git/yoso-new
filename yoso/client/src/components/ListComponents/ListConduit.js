@@ -9,24 +9,20 @@ import UserLists from "./UserLists";
 import ListAPI from "../../utilities/ListAPI";
 
 export default class ListConduit extends Component {
-  constructor(props) {
-    super(props);
 
-    this.state = { lists: [], view: 0 };
-  }
+  state = {
+    lists: [],
+    view: 0
+  };
 
   componentDidMount() {
     console.log(`inside the conduit, here's props: `, this.props);
-
     this.getLists(this.props.user.id);
   }
 
   getLists = id => {
     ListAPI.getLists(id).then(res => {
-      console.log(
-        `From getlists at listconduit, here's the user's lists: `,
-        res
-      );
+      console.log(`From getlists at listconduit, here's the user's lists: `, res);
       this.setState({
         lists: res.data,
         id: this.props.user.id,

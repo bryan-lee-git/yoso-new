@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Card } from "react-materialize";
-import BuildPantry from "../utilities/YOSOSimulator.js/BuildPantry";
-import { categories } from "../utilities/ItemTerms";
-import PantryAPI from "../utilities/PantryAPI";
+import BuildPantry from "../../utilities/YOSOSimulator.js/BuildPantry";
+import { categories } from "../../utilities/ItemTerms";
+import PantryAPI from "../../utilities/PantryAPI";
 
 export default class WasteSimData extends Component {
   constructor(props) {
