@@ -2,13 +2,15 @@ import React from "react";
 import NoListWarning from "./NoListWarning";
 import SwitchButton from "./SwitchButton";
 import LogoRow from "../LogoRow";
+import BackBtn from "../BackBtn";
 
 export default props => {
   const { handleSwitch } = props;
   console.log(`inside listswitch, here's props: `, props);
   return (
     <React.Fragment>
-      <LogoRow goto="/home" />
+      <LogoRow />
+      <BackBtn goto="/home" />
       {props.context.lists.length === 0 ? (
         <div>
           <NoListWarning />
