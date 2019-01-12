@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import WasteItem from "../../components/WasteComponents/WasteItem";
+import WasteItem from "../../components/WasteItem";
 import { Container, Row, Col, Icon, Button } from "react-materialize";
 import BackBtn from "../../components/BackBtn";
 
