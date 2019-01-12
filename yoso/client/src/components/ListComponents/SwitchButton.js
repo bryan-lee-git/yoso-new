@@ -1,9 +1,7 @@
 import React from "react";
 import { Col, Button } from "react-materialize";
-import { Link } from "react-router-dom";
 
 export default props => {
-  // console.log(`inside switchbutton, here's props: `, props);
   const { view, text, onClick, value } = props;
   return (
     <React.Fragment>
@@ -16,7 +14,6 @@ export default props => {
         >
           {text}
         </Button>
-
         <br />
         <br />
       </Col>

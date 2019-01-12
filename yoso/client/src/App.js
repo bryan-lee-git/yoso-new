@@ -11,7 +11,6 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Home from "./pages/Home";
 import Lists from "./pages/Lists";
-
 import Pantry from "./pages/Pantry";
 import RecipeContain from "./pages/RecipeContain";
 import Waste from "./pages/Waste";
@@ -19,7 +18,6 @@ import About from "./pages/About";
 import Account from "./pages/Account";
 import axios from "axios";
 import "./Yoso.css";
-import ListAPI from "./utilities/ListAPI";
 export const UserContext = React.createContext({});
 
 const bcrypt = require("bcryptjs");

@@ -1,11 +1,8 @@
 import React, { Component } from "react";
-
 import { Container, Row } from "react-materialize";
-
 import ListSwitch from "./ListSwitch";
 import NewList from "./NewList";
 import UserLists from "./UserLists";
-
 import ListAPI from "../../utilities/ListAPI";
 
 export default class ListConduit extends Component {

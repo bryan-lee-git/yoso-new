@@ -18,19 +18,19 @@ export default class WasteSimData extends Component {
   }
 
   componentDidMount() {
-    // categories.forEach((category, index) => {
-    //   let size = Math.floor(category.length * 0.4);
-    //   console.log(`size is ${size}`);
-    //   for (let i = 0; i < size; i++) {
-    //     PantryAPI.findOrCreatePantryItem(
-    //       BuildPantry(category, index, this.state.UserId)
-    //     ).then(response =>
-    //       this.setState({
-    //         pantry: [...this.state.pantry, response.data[0]]
-    //       })
-    //     );
-    //   }
-    // });
+    categories.forEach((category, index) => {
+      let size = Math.floor(category.length * 0.4);
+      console.log(`size is ${size}`);
+      for (let i = 0; i < size; i++) {
+        PantryAPI.findOrCreatePantryItem(
+          BuildPantry(category, index, this.state.UserId)
+        ).then(response =>
+          this.setState({
+            pantry: [...this.state.pantry, response.data[0]]
+          })
+        );
+      }
+    });
   }
   render() {
     const pantry = this.state.pantry.map(item => (
