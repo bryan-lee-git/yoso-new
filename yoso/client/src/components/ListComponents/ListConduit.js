@@ -1,45 +1,46 @@
 import React, { Component } from "react";
-import { MyContext } from "../../App";
-import { Container, Row, Col } from "react-materialize";
-import LogoRow from "../../components/LogoRow";
+
+import { Container, Row } from "react-materialize";
+
 import ListSwitch from "./ListSwitch";
 import NewList from "./NewList";
 import UserLists from "./UserLists";
-import ShopList from "./ShopList";
+
 import ListAPI from "../../utilities/ListAPI";
 
 export default class ListConduit extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { lists: ["this list"], view: 0 };
+    this.state = { lists: [], view: 0 };
   }
 
   componentDidMount() {
     console.log(`inside the conduit, here's props: `, this.props);
 
-    ListAPI.getLists(this.props.state.id).then(res => {
+    this.getLists(this.props.user.id);
+  }
+
+  getLists = id => {
+    ListAPI.getLists(id).then(res => {
       console.log(
         `From getlists at listconduit, here's the user's lists: `,
         res
       );
       this.setState({
-        lists: res.data
+        lists: res.data,
+        id: this.props.user.id,
+        first: this.props.user.first
       });
     });
-  }
+  };
 
-  handleSwitch = e => {
-    console.log(
-      `here at handleswitch inside lists, here's e.target.value: `,
-      e.target.value
-    );
+  handleSwitch = (e, view) => {
+    console.log(`here at handleswitch inside lists `);
     e.preventDefault();
     this.setState({
-      view: e.target.value,
-      rerender: this.props.renderState
+      view: view
     });
-    this.props.rerender();
   };
 
   render() {
@@ -50,11 +51,15 @@ export default class ListConduit extends Component {
       <Container>
         <Row className="btn-row">
           {view === 0 ? (
-            <ListSwitch stuff={this.state} handleSwitch={this.handleSwitch} />
+            <ListSwitch context={this.state} handleSwitch={this.handleSwitch} />
           ) : view == 1 ? (
-            <NewList view={view} handleSwitch={this.handleSwitch} />
+            <NewList context={this.state} handleSwitch={this.handleSwitch} />
           ) : (
-            <UserLists view={view} handleSwitch={this.handleSwitch} />
+            <UserLists
+              context={this.state}
+              handleSwitch={this.handleSwitch}
+              getLists={this.getLists}
+            />
           )}
         </Row>
       </Container>

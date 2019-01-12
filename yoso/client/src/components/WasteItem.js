@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Col, Card, Row } from "react-materialize";
-import { MyContext } from "../../src/App";
+import { UserContext } from "../../src/App";
 import Moment from "react-moment";
 
 import WasteSimData from "./WasteSimData";
@@ -10,7 +10,7 @@ class WasteItem extends Component {
   render() {
     const date = new Date();
     return (
-      <MyContext.Consumer>
+      <UserContext.Consumer>
         {context => {
           console.log(`inside wasteitem, here's the context: `, context);
           return (
@@ -39,7 +39,7 @@ class WasteItem extends Component {
             </Row>
           );
         }}
-      </MyContext.Consumer>
+      </UserContext.Consumer>
     );
   }
 }

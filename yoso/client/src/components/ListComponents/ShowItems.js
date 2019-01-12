@@ -8,13 +8,13 @@ class ShowItems extends Component {
   };
   componentDidMount() {
     ItemAPI.getItems(this.props.listId).then(res => {
-      console.log(`From getlists at userLists, here's the user's items: `, res);
+      //console.log(`From getlists at userLists, here's the user's items: `, res);
       this.setState({ items: res.data });
     });
   }
   render() {
-    console.log(`inside show items, here's this: `, this);
-    console.log(`inside show items, here's the props: `, this.props);
+    //console.log(`inside show items, here's this: `, this);
+    //console.log(`inside show items, here's the props: `, this.props);
     return (
       <div>
         <Row>

@@ -4,19 +4,19 @@ import SwitchButton from "./SwitchButton";
 import LogoRow from "../LogoRow";
 
 export default props => {
-  const { handleSwitch, handleRerender } = props;
+  const { handleSwitch } = props;
   console.log(`inside listswitch, here's props: `, props);
   return (
     <React.Fragment>
       <LogoRow goto="/home" />
-      {props.stuff.lists.length === 0 ? (
+      {props.context.lists.length === 0 ? (
         <div>
           <NoListWarning />
           <SwitchButton
             view="new-list"
             value={1}
             text="NEW LIST"
-            onClick={handleSwitch}
+            onClick={e => handleSwitch(e, 1)}
           />
         </div>
       ) : (
@@ -24,14 +24,12 @@ export default props => {
           <SwitchButton
             view="new-list"
             text="NEW LIST"
-            value={1}
-            onClick={handleSwitch}
+            onClick={e => handleSwitch(e, 1)}
           />
           <SwitchButton
             view="my-lists"
-            value={2}
             text="MY LISTS"
-            onClick={handleSwitch}
+            onClick={e => handleSwitch(e, 2)}
           />
         </div>
       )}

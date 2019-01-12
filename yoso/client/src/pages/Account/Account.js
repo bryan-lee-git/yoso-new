@@ -9,7 +9,7 @@ import {
   Card,
   Button
 } from "react-materialize";
-import { MyContext } from "../../App";
+import { UserContext } from "../../App";
 
 class Account extends Component {
   state = {};
@@ -31,7 +31,7 @@ class Account extends Component {
     }
 
     return (
-      <MyContext.Consumer>
+      <UserContext.Consumer>
         {context => {
           return (
             <Container className="center-align">
@@ -195,7 +195,7 @@ class Account extends Component {
             </Container>
           );
         }}
-      </MyContext.Consumer>
+      </UserContext.Consumer>
     );
   }
 }
