@@ -3,7 +3,7 @@ import { Row, Col, Button, Icon } from "react-materialize";
 import { Link } from "react-router-dom";
 
 export default props => {
-  console.log(`inside logorow, here's props: `, props);
+  //console.log(`inside logorow, here's props: `, props);
   const { goto } = props;
   return (
     <React.Fragment>

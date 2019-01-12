@@ -96,7 +96,7 @@ export default class NewList extends Component {
             <Container className="center-align">
               <Row>
                 <Col s={3}>
-                  <Link to="/lists">
+                  <Link to="/lists" onClick={this.props.handleSwitch}>
                     <br />
                     <br />
                     <br />

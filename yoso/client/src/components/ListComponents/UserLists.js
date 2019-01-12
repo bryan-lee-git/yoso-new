@@ -1,214 +1,129 @@
 import React, { Component } from "react";
-import { Link, Redirect } from "react-router-dom";
+import ShowItems from "../../components/ListComponents/ShowItems";
+import { MyContext } from "../../App";
 import {
-  Card,
-  Container,
-  Row,
+  Collapsible,
   Col,
-  Autocomplete,
-  Input,
+  Row,
+  CollapsibleItem,
+  Container,
   Button,
-  Icon,
-  Table
+  Icon
 } from "react-materialize";
 import ListAPI from "../../utilities/ListAPI";
+import { Link } from "react-router-dom";
 import ItemAPI from "../../utilities/ItemAPI";
-import { terms } from "../../utilities/ItemTerms";
-import { MyContext } from "../../App";
 
-export default class NewList extends Component {
-  state = { items: [], terms: terms, redirect: false };
+export default class UserLists extends Component {
+  state = {};
 
-  handleChange = e => {
+  handleDeleteList = (e, userId, listId, cb) => {
     e.preventDefault();
-
-    const { name, value } = e.target;
-    console.log(`inside handleChange, name: ${name} and value: ${value}`);
-    if (value) {
-      const capName = value.replace(
-        value.charAt(0),
-        value.charAt(0).toUpperCase()
-      );
-      this.setState({ [name]: capName });
-    }
-  };
-  handleAutocomplete = value => {
-    console.log(`inside handleAutocomplete, value: ${value}`);
-    const capName = value.replace(
-      value.charAt(0),
-      value.charAt(0).toUpperCase()
+    console.log(
+      `Delete button pushed inside userlist to delete a list id# ${listId}`
     );
-    this.setState({ name: capName });
+    ListAPI.deleteList(userId, listId).then(response => cb(userId));
   };
-
-  handleNewItem = e => {
+  handleDeleteItem = (e, userId, listId, itemId, cb) => {
     e.preventDefault();
-
-    const newItem = {
-      name: this.state.name,
-      unitSize: this.state.unitSize,
-      quantity: this.state.quantity
-    };
-    const newItems = [...this.state.items, newItem];
-    this.setState({ items: newItems });
+    console.log(
+      `Delete button pushed inside userlist to delete a list id# ${listId} and item id: ${itemId}`
+    );
+    ItemAPI.deleteItem(listId, itemId).then(response => cb(userId));
   };
-
-  handleRemoveItem = event => {
-    const index = event.target.dataset.index;
-    const newItems = this.state.items;
-    newItems.splice(index, 1);
-    this.setState({ items: newItems });
-  };
-
-  createList = (e, id, cb) => {
-    e.preventDefault();
-    console.log(`userid going to db is ${id}`);
-    ListAPI.createList(id, {
-      name: this.state.listName
-    }).then(response => {
-      console.log(`response data is: `, response.data);
-      this.state.items.forEach(item => {
-        item.ListId = response.data.id;
-        this.setState({
-          listId: response.data.id
-        });
-        ItemAPI.createItem(item).then(response => {
-          console.log(response);
-        });
+  getItems = id => {
+    ItemAPI.getItems(id).then(res => {
+      console.log(`From getlists at userLists, here's the user's lists: `, res);
+      this.setState({
+        items: res.data
       });
-      cb(id);
-      this.handleRedirect();
     });
   };
-
-  handleRedirect = () => {
-    this.setState({ redirect: true });
-  };
-
   render() {
     console.log(
-      `inside usercomps/userlists render method, here's props:`,
+      `inside the render method of userlists, here's props: `,
       this.props
     );
-    if (this.state.redirect) {
-      return <Redirect to={`/lists`} />;
-    }
     return (
       <MyContext.Consumer>
         {context => {
+          console.log(`context.state in userlist is `, context.state);
+          console.log(`context.state.lists = `, context.state.lists);
+          console.log(
+            `context.state.lists[0].name = ${
+              context.state.lists[0].name
+            } and context.state.lists[0].id = ${context.state.lists[0].id}`
+          );
+          const lists = context.state.lists.map((list, index) => (
+            <Collapsible key={index} accordion defaultActiveKey={1}>
+              <CollapsibleItem header={list.name}>
+                <Col s={3}>
+                  <Button
+                    onClick={e =>
+                      this.handleDeleteList(
+                        e,
+                        context.state.id,
+                        list.id,
+                        context.state.getLists
+                      )
+                    }
+                  >
+                    {" "}
+                    <Icon data-index={index}>delete_forever</Icon>
+                    <br />
+                  </Button>
+                </Col>
+                <Col s={3} offset="6" className="right">
+                  <Button>
+                    <Icon data-index={index}>send</Icon>
+                  </Button>
+                </Col>
+
+                <ShowItems
+                  key={list.id}
+                  listId={list.id}
+                  name={list.name}
+                  currentList={list.lists}
+                  getItems={this.getItems}
+                  onClick={e =>
+                    this.handleDeleteItem(
+                      e,
+                      context.id,
+                      list.id,
+                      this.key,
+                      context.state.getLists
+                    )
+                  }
+                />
+              </CollapsibleItem>
+            </Collapsible>
+          ));
           return (
-            <React.Fragment>
+            <Container className="center-align">
+              <h1>{this.props.view}</h1>
               <Row>
-                <Col s={12}>
-                  <h1 className="white-text fade-in">
-                    {!this.state.listName ? "New List" : this.state.listName}
+                <Col s={3}>
+                  <Link to="/lists" onClick={this.props.handleClick}>
+                    <br />
+                    <br />
+                    <br />
+                    <Button>
+                      <Icon>arrow_back</Icon>
+                    </Button>
+                  </Link>
+                </Col>
+                <Col>
+                  <h1 className="white-text center-align">
+                    {context.state.first.toUpperCase()}'S LISTS
                   </h1>
                 </Col>
               </Row>
-              <Row>
-                <Col s={12} l={4}>
-                  <Card className="z-depth-5 animate-up list-card">
-                    <Input
-                      s={12}
-                      placeholder="Enter list name here"
-                      label="List Name"
-                      name="listName"
-                      onChange={this.handleChange}
-                    />
-                  </Card>
-                </Col>
-                <Col s={12} l={8}>
-                  <Card
-                    id="new-item-input"
-                    className="z-depth-5 animate-up-2 list-card"
-                  >
-                    <Autocomplete
-                      s={4}
-                      l={3}
-                      data={this.state.terms}
-                      placeholder="Name"
-                      onAutocomplete={
-                        this.handleAutocomplete //label="New Item"
-                      }
-                      name="name"
-                      onChange={this.handleChange}
-                    />
-                    <Input
-                      s={4}
-                      l={3}
-                      placeholder="Unit Size"
-                      label="Unit Size"
-                      name="unitSize"
-                      onChange={this.handleChange}
-                    />
-                    <Input
-                      s={4}
-                      l={3}
-                      placeholder="Quantity"
-                      label="Quantity"
-                      name="quantity"
-                      onChange={this.handleChange}
-                    />
-                    <Button
-                      s={12}
-                      l={3}
-                      className="btn btn-large"
-                      onClick={this.handleNewItem}
-                    >
-                      Add Item
-                    </Button>
-                  </Card>
-                </Col>
-              </Row>
-              <Col s={12}>
-                <Card className="animate-up-3">
-                  <Row>
-                    <h2>{this.state.items.name}</h2>
-                    {this.state.items.length > 0 ? (
-                      <Table className="striped highlight centered">
-                        <thead>
-                          <tr>
-                            <th>Name</th>
-                            <th>Size</th>
-                            <th>Quantity</th>
-                            <th>Remove Item</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {this.state.items.map((item, index) => (
-                            <tr key={index}>
-                              <td>{item.name}</td>
-                              <td>{item.unitSize}</td>
-                              <td>{item.quantity}</td>
-                              <td onClick={this.state.handleRemoveItem}>
-                                <Icon data-index={index}>delete_forever</Icon>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </Table>
-                    ) : (
-                      <div>No Items Added to Your List Yet</div>
-                    )}
-                  </Row>
-                </Card>
-              </Col>
-
-              <Row className="btn-row">
-                <Button
-                  id="save-list"
-                  className="btn btn-large animate-up-4"
-                  onClick={e =>
-                    this.createList(e, context.state.id, context.state.getLists)
-                  }
-                >
-                  Save List
-                </Button>
-              </Row>
-            </React.Fragment>
+              <Row>{lists}</Row>
+            </Container>
           );
         }}
       </MyContext.Consumer>
     );
   }
 }
+UserLists.contextType = MyContext;
