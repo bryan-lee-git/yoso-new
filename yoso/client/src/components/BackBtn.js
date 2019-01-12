@@ -1,0 +1,18 @@
+import React from "react";
+import { Link } from "react-router-dom";
+import { Row, Col, Button, Icon } from "react-materialize";
+
+export default props => {
+  const { goto, page, handleSwitch } = props;
+  return (
+    <Row>
+      <Col s={12}>
+        <Link to={goto} onClick={e => handleSwitch(e, page)}>
+          <Button className="back-btn">
+            <Icon>arrow_back</Icon>
+          </Button>
+        </Link>
+      </Col>
+    </Row>
+  );
+};

@@ -11,8 +11,7 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Home from "./pages/Home";
 import Lists from "./pages/Lists";
-import UserLists from "./pages/UserLists";
-import NewList from "./pages/NewList";
+
 import Pantry from "./pages/Pantry";
 import RecipeContain from "./pages/RecipeContain";
 import Waste from "./pages/Waste";
@@ -21,7 +20,7 @@ import Account from "./pages/Account";
 import axios from "axios";
 import "./Yoso.css";
 import ListAPI from "./utilities/ListAPI";
-export const MyContext = React.createContext({});
+export const UserContext = React.createContext({});
 
 const bcrypt = require("bcryptjs");
 const salt = bcrypt.genSaltSync(10);
@@ -47,19 +46,8 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 );
 
 class App extends Component {
-  getLists = id => {
-    ListAPI.getLists(id).then(res => {
-      console.log(`From getlists at app.js, here's the user's lists: `, res);
-      this.setState({
-        lists: res.data
-      });
-    });
-  };
-
   state = {
-    loggedIn: false,
-    lists: [],
-    getLists: this.getLists
+    loggedIn: false
   };
 
   handleSignUp = (data, cb) => {
@@ -126,7 +114,7 @@ class App extends Component {
                 id: response.data.id,
                 loggedIn: true
               });
-              this.getLists(this.state.id);
+
               if (cb) cb();
             } else console.log("Incorrect Log-In Attempt. Please Try Again.");
           });
@@ -185,10 +173,10 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <MyContext.Provider
+        <UserContext.Provider
           className="container-fluid"
           value={{
-            state: this.state,
+            user: this.state,
             accountUpdate: this.handleAccountUpdate,
             logOut: this.handleLogOut
           }}
@@ -221,14 +209,8 @@ class App extends Component {
               />
               <Route exact path="/about" component={About} />
               <PrivateRoute exact path="/home" component={Home} />
-              <PrivateRoute
-                exact
-                path="/lists"
-                component={Lists}
-                lists={this.state.lists}
-              />
-              <PrivateRoute exact path="/newlist" component={NewList} />
-              <PrivateRoute exact path="/mylists" component={UserLists} />
+
+              <PrivateRoute exact path="/lists" component={Lists} />
               <PrivateRoute exact path="/pantry" component={Pantry} />
               <PrivateRoute exact path="/recipes" component={RecipeContain} />
               <PrivateRoute exact path="/waste" component={Waste} />
@@ -260,7 +242,7 @@ class App extends Component {
               </div>
             </footer>
           </div>
-        </MyContext.Provider>
+        </UserContext.Provider>
       </Router>
     );
   }

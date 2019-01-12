@@ -23,9 +23,6 @@ class Waste extends Component {
             <h1 className="white-text fade-in">WASTE LESS!</h1>
           </Col>
         </Row>
-        <div className="animate-up btn-row">
-          <WasteItem />
-        </div>
       </Container>
     );
   }

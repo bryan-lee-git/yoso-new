@@ -1,11 +1,11 @@
 import React from "react";
 import { Container, Col, Row, Button } from "react-materialize";
 import { Link } from "react-router-dom";
-import { MyContext } from "../../App";
+import { UserContext } from "../../App";
 
 const Home = () => {
   return (
-    <MyContext.Consumer>
+    <UserContext.Consumer>
       {context => {
         return (
           <Container>
@@ -21,7 +21,7 @@ const Home = () => {
               </Col>
               <Col s={12} className="center-align white-text name-header">
                 <h4>
-                  GET YOUR SHIT TOGETHER, {context.state.first.toUpperCase()}!
+                  GET YOUR SHIT TOGETHER, {context.user.first.toUpperCase()}!
                 </h4>
               </Col>
             </Row>
@@ -29,7 +29,10 @@ const Home = () => {
             <Row className="btn-row">
               <Col s={6} m={4} l={2}>
                 <Link to="/lists">
-                  <Button id="home-list" className="animate-up home-btn z-depth-5 btn-large">
+                  <Button
+                    id="home-list"
+                    className="animate-up home-btn z-depth-5 btn-large"
+                  >
                     LISTS
                   </Button>
                 </Link>
@@ -89,7 +92,7 @@ const Home = () => {
           </Container>
         );
       }}
-    </MyContext.Consumer>
+    </UserContext.Consumer>
   );
 };
 
