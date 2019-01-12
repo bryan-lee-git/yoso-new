@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import Recipe from "../../components/Recipe";
+import Recipe from "../../components/RecipeComponents/Recipe";
 import { Container, Row, Col, Icon, Button, Card } from "react-materialize";
 import Yummly from "../../utilities/RecipeAPI";
-import RecipeSearch from "../../components/RecipeSearch";
+import RecipeSearch from "../../components/RecipeComponents/RecipeSearch";
 import { Link } from "react-router-dom";
 
 class RecipeContain extends Component {

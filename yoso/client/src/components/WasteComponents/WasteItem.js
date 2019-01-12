@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Col, Card, Row } from "react-materialize";
-import { UserContext } from "../../src/App";
+import { UserContext } from "../../App";
 import Moment from "react-moment";
 
 import WasteSimData from "./WasteSimData";
