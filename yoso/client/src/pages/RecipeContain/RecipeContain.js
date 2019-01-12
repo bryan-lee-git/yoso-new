@@ -4,6 +4,7 @@ import { Container, Row, Col, Icon, Button, Card } from "react-materialize";
 import Yummly from "../../utilities/RecipeAPI";
 import RecipeSearch from "../../components/RecipeSearch";
 import { Link } from "react-router-dom";
+import BackBtn from "../../components/BackBtn";
 
 class RecipeContain extends Component {
   state = {
@@ -47,11 +48,9 @@ class RecipeContain extends Component {
             <h1 className="white-text fade-in">FIND RECIPES</h1>
           </Col>
           <Col s={12}>
-            <Link to="/home">
-              <Button className="back-btn">
-                <Icon>arrow_back</Icon>
-              </Button>
-            </Link>
+          <BackBtn
+            goto="/home"
+          />
           </Col>
         </Row>
         <Card className="rounded z-depth-5 animate-up">
