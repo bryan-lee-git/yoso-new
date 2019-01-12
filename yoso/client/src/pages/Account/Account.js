@@ -7,8 +7,8 @@ import {
   Input,
   Icon,
   Card,
-  Button
 } from "react-materialize";
+import BackBtn from '../../components/BackBtn';
 import { UserContext } from "../../App";
 
 class Account extends Component {
@@ -41,11 +41,9 @@ class Account extends Component {
                   <h1 className="white-text fade-in">YOUR ACCOUNT INFO</h1>
                 </Col>
                 <Col s={12}>
-                  <Link to="/home">
-                    <Button className="back-btn">
-                      <Icon>arrow_back</Icon>
-                    </Button>
-                  </Link>
+                <BackBtn
+                  goto="/Home"
+                />
                 </Col>
               </Row>
               <form>
