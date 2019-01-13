@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ShowItems from "../../components/ListComponents/ShowItems";
+import PageHeader from "../PageHeader"
 
 import {
   Collapsible,
@@ -25,6 +26,7 @@ export default class UserLists extends Component {
     );
     ListAPI.deleteList(userId, listId).then(response => cb(userId));
   };
+
   handleDeleteItem = (e, userId, listId, itemId, cb) => {
     e.preventDefault();
     console.log(
@@ -32,6 +34,7 @@ export default class UserLists extends Component {
     );
     ItemAPI.deleteItem(listId, itemId).then(response => cb(userId));
   };
+
   getItems = id => {
     ItemAPI.getItems(id).then(res => {
       console.log(
@@ -43,6 +46,7 @@ export default class UserLists extends Component {
       });
     });
   };
+
   render() {
     console.log(
       `inside the render method of userlists, here's props: `,
@@ -91,9 +95,9 @@ export default class UserLists extends Component {
       <Container className="center-align">
         <Row>
           <Col s={12}>
-            <h1 className="white-text center-align">
+            <PageHeader>
               {this.props.context.first.toUpperCase()}'S LISTS
-            </h1>
+            </PageHeader>
           </Col>
         </Row>
         <BackBtn

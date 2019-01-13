@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import Recipe from "../../components/RecipeComponents/Recipe";
-import { Container, Row, Col, Card } from "react-materialize";
+import { Container, Row, Card } from "react-materialize";
 import Yummly from "../../utilities/RecipeAPI";
 import RecipeSearch from "../../components/RecipeComponents/RecipeSearch";
 import BackBtn from "../../components/BackBtn";
+import BottomSpacer from "../../components/BottomSpacer";
+import PageHeader from "../../components/PageHeader";
 
 class RecipeContain extends Component {
 
@@ -42,40 +44,30 @@ class RecipeContain extends Component {
   render() {
     return (
       <Container className="center-align">
-        <br />
-        <Row>
-          <Col s={12}>
-            <h1 className="white-text fade-in">FIND RECIPES</h1>
-          </Col>
-          <Col s={12}>
-          <BackBtn
-            goto="/home"
-          />
-          </Col>
-        </Row>
+        <PageHeader>FIND RECIPES</PageHeader>
+        <BackBtn goto="/home"/>
         <Card className="rounded z-depth-5 animate-up">
-        <RecipeSearch
-          handleInputChange={this.handleInputChange}
-          handleFormSubmit={this.handleFormSubmit}
-        />
+          <RecipeSearch
+            handleInputChange={this.handleInputChange}
+            handleFormSubmit={this.handleFormSubmit}
+          />
         </Card>
-        <div className="animate-up-2 btn-row">
-          {this.state.response ? (
-            <Row>
-              {this.state.response.map((recipe, index) => (
-                <Recipe
-                  key={index}
-                  title={recipe.recipeName}
-                  ingredients={recipe.ingredients}
-                  img={recipe.smallImageUrls[0]}
-                  link={`https://www.yummly.com/recipe/${recipe.id}`}
-                />
-              ))}
-            </Row>
-          ) : (
-            <div></div>
-          )}
-        </div>
+        {this.state.response ? (
+          <Row className="animate-up-2">
+            {this.state.response.map((recipe, index) => (
+              <Recipe
+                key={index}
+                title={recipe.recipeName}
+                ingredients={recipe.ingredients}
+                img={recipe.smallImageUrls[0]}
+                link={`https://www.yummly.com/recipe/${recipe.id}`}
+              />
+            ))}
+          </Row>
+        ) : (
+          <div></div>
+        )}
+        <BottomSpacer/>
       </Container>
     );
   }

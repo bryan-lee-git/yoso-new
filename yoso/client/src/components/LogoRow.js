@@ -1,17 +1,12 @@
 import React from "react";
-import { Row, Col, Button, Icon } from "react-materialize";
-import { Link } from "react-router-dom";
+import { Row, Col } from "react-materialize";
 
-export default props => {
-  //console.log(`inside logorow, here's props: `, props);
-  const { goto } = props;
+export default () => {
   return (
     <React.Fragment>
       <Row>
         <br />
-        <br />
-
-        <Col s={6} l={6} offset="l2">
+        <Col s={12} l={8} offset="l2">
           <img
             id="home-logo"
             alt="yoso logo"
