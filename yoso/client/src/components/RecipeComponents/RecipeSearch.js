@@ -9,12 +9,9 @@ const RecipeSearch = (props) => {
             <Row>
                 <Input s={12} onChange={props.handleInputChange} label="Search Recipes" type="text" name="query" />
                 <br />
-                <button
-                    onClick={props.handleFormSubmit}
-                    className="btn btn-primary"
-                >
+                <button onClick={props.handleFormSubmit} className="btn btn-primary">
                     Search
-            </button>
+                </button>
             </Row>
         </form>
     )

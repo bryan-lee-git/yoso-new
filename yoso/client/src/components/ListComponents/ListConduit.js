@@ -4,6 +4,7 @@ import ListSwitch from "./ListSwitch";
 import NewList from "./NewList";
 import UserLists from "./UserLists";
 import ListAPI from "../../utilities/ListAPI";
+import BottomSpacer from "../BottomSpacer";
 
 export default class ListConduit extends Component {
 
@@ -42,10 +43,10 @@ export default class ListConduit extends Component {
 
     return (
       <Container>
-        <Row className="btn-row">
+        <Row>
           {view === 0 ? (
             <ListSwitch context={this.state} handleSwitch={this.handleSwitch} />
-          ) : view == 1 ? (
+          ) : view === 1 ? (
             <NewList context={this.state} handleSwitch={this.handleSwitch} />
           ) : (
             <UserLists
@@ -55,6 +56,7 @@ export default class ListConduit extends Component {
             />
           )}
         </Row>
+        <BottomSpacer/>
       </Container>
     );
   }

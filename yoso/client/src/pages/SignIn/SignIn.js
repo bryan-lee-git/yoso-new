@@ -9,6 +9,7 @@ import {
   Card,
   Button
 } from "react-materialize";
+import PageHeader from "../../components/PageHeader";
 
 class SignIn extends Component {
   state = {
@@ -43,7 +44,7 @@ class SignIn extends Component {
           <br />
           <Row>
             <Col s={12}>
-              <h1 className="white-text fade-in">SIGN IN</h1>
+              <PageHeader>SIGN IN</PageHeader>
             </Col>
           </Row>
 
@@ -53,7 +54,7 @@ class SignIn extends Component {
                 <h5 className="fade-in">ENTER A VALID EMAIL AND PASSWORD</h5>
                 <br />
                 <Row>
-                  <Col s={12} l={12}>
+                  <Col s={12}>
                     <Input
                       s={12}
                       onChange={this.handleInputChange}
@@ -64,7 +65,7 @@ class SignIn extends Component {
                       <Icon>email</Icon>
                     </Input>
                   </Col>
-                  <Col s={12} l={12}>
+                  <Col s={12}>
                     <Input
                       s={12}
                       onChange={this.handleInputChange}
@@ -80,12 +81,11 @@ class SignIn extends Component {
                   {this.state.email && this.state.password ? (
                     <div>
                       <Col s={6}>
-                        <Input
+                        <Button
                           s={12}
                           onClick={this.handleSignIn}
                           className="signin-btn btn btn-large"
-                          type="submit"
-                        />
+                        >SIGN IN</Button>
                       </Col>
                       <Col s={6}>
                         <Link to={this.props.signUpPath}>
@@ -98,13 +98,12 @@ class SignIn extends Component {
                   ) : (
                     <div>
                       <Col s={6}>
-                        <Input
+                        <Button
                           s={12}
                           onClick={this.handleSignIn}
                           className="signin-btn btn btn-large"
-                          type="submit"
                           disabled
-                        />
+                        >SIGN IN</Button>
                       </Col>
                       <Col s={6}>
                         <Link to={this.props.signUpPath}>

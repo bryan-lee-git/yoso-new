@@ -1,19 +1,14 @@
 import React, { Component } from "react";
 import PantryItem from "../../components/PantryItem";
-import { Container, Row, Col } from "react-materialize";
-
+import { Container } from "react-materialize";
+import PageHeader from "../../components/PageHeader";
 import BackBtn from "../../components/BackBtn";
 
 class Pantry extends Component {
   render() {
     return (
       <Container className="center-align">
-        <br />
-        <Row>
-          <Col s={12}>
-            <h1 className="white-text fade-in">IN THE PANTRY</h1>
-          </Col>
-        </Row>
+        <PageHeader>IN THE PANTRY</PageHeader>
         <BackBtn goto="home" />
         <div className="animate-up">
           <PantryItem />

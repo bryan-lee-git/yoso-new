@@ -1,20 +1,14 @@
 import React from "react";
 import { Container, Row, Col, Card, } from "react-materialize";
+import LogoRow from "../../components/LogoRow";
+import BottomSpacer from "../../components/BottomSpacer";
 
 const About = () => {
   return (
     <Container className="center-align">
     <br/>
+      <LogoRow />
       <Row>
-        <Col s={8} offset="s2">
-          <img
-            id="home-logo"
-            alt="yoso logo"
-            src="./img/Yoso-Logo-Large-Text-White-Tag-Shadow.svg"
-          />
-        </Col>
-      </Row>
-      <Row className="btn-row">
         <Col className="animate-up" s={12} m={12} l={4}>
           <Card className="z-depth-4 about-card" id="what-card">
             <h3 className="card-header-text">What?</h3>
@@ -121,6 +115,7 @@ const About = () => {
           </Card>
         </Col>
       </Row>
+      <BottomSpacer/>
     </Container>
   );
 };

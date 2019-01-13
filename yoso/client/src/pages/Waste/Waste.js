@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import WasteItem from "../../components/WasteComponents/WasteItem";
+import PageHeader from "../../components/PageHeader";
 import { Container, Row, Col } from "react-materialize";
 import BackBtn from "../../components/BackBtn";
 import { UserContext } from "../../App";
@@ -16,7 +17,7 @@ class Waste extends Component {
               <br />
               <Row>
                 <Col s={6}>
-                  <h1 className="white-text fade-in">WASTE LESS!</h1>
+                  <PageHeader>WASTE LESS!</PageHeader>
                 </Col>
               </Row>
               <BackBtn goto="/home"/>
