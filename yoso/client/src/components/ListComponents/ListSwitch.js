@@ -13,7 +13,7 @@ export default props => {
         <BackBtn goto="/home" />
       </Col>
       {props.context.lists.length === 0 ? (
-        <Col s={12} className="animate-up">
+        <Col s={12}>
           <SwitchButton
             view="new-list"
             text="NEW LIST"
@@ -21,15 +21,15 @@ export default props => {
           />
         </Col>
       ) : (
-        <div className="animate-up">
-          <Col s={6}>
+        <div>
+          <Col s={12} l={6}>
             <SwitchButton
               view="new-list"
               text="NEW LIST"
               onClick={e => handleSwitch(e, 1)}
             />
           </Col>
-          <Col s={6}>
+          <Col s={12} l={6}>
             <SwitchButton
               view="my-lists"
               text="MY LISTS"

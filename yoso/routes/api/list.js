@@ -13,7 +13,7 @@ router.route("/items").post(ListController.createListWithItems);
 // Matches with "/api/list/:id"
 router
   .route("/:id")
-  .get(ListController.findById)
+  .post(ListController.findById)
   .put(ListController.update)
   .delete(ListController.destroy);
 
