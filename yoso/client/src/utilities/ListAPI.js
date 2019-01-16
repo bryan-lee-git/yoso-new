@@ -11,12 +11,12 @@ export default {
     });
   },
   // Get a specific User List.
-  getList: function(userId, listId) {
+  getList: function(listId) {
     return axios({
-      method: `get`,
+      method: `post`,
       url: `/api/list/${listId}`,
       data: {
-        userId: userId
+        listId: listId
       }
     });
   },

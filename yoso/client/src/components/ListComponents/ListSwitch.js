@@ -1,38 +1,41 @@
 import React from "react";
-import NoListWarning from "./NoListWarning";
 import SwitchButton from "./SwitchButton";
 import LogoRow from "../LogoRow";
 import BackBtn from "../BackBtn";
+import { Col } from "react-materialize";
 
 export default props => {
   const { handleSwitch } = props;
-  console.log(`inside listswitch, here's props: `, props);
   return (
     <React.Fragment>
-      <LogoRow />
-      <BackBtn goto="/home" />
+      <Col s={12}>
+        <LogoRow />
+        <BackBtn goto="/home" />
+      </Col>
       {props.context.lists.length === 0 ? (
-        <div>
-          <NoListWarning />
+        <Col s={12}>
           <SwitchButton
             view="new-list"
-            value={1}
             text="NEW LIST"
             onClick={e => handleSwitch(e, 1)}
           />
-        </div>
+        </Col>
       ) : (
         <div>
-          <SwitchButton
-            view="new-list"
-            text="NEW LIST"
-            onClick={e => handleSwitch(e, 1)}
-          />
-          <SwitchButton
-            view="my-lists"
-            text="MY LISTS"
-            onClick={e => handleSwitch(e, 2)}
-          />
+          <Col s={12} l={6}>
+            <SwitchButton
+              view="new-list"
+              text="NEW LIST"
+              onClick={e => handleSwitch(e, 1)}
+            />
+          </Col>
+          <Col s={12} l={6}>
+            <SwitchButton
+              view="my-lists"
+              text="MY LISTS"
+              onClick={e => handleSwitch(e, 2)}
+            />
+          </Col>
         </div>
       )}
     </React.Fragment>

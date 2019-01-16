@@ -2,6 +2,9 @@ import React from "react";
 import { Container, Col, Row, Button } from "react-materialize";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../App";
+import BottomSpacer from "../../components/BottomSpacer";
+import LogoRow from "../../components/LogoRow";
+
 
 const Home = () => {
   return (
@@ -9,16 +12,8 @@ const Home = () => {
       {context => {
         return (
           <Container>
+            <LogoRow/>
             <Row>
-              <br />
-              <br />
-              <Col s={12} l={8} offset="l2">
-                <img
-                  id="home-logo"
-                  alt="yoso logo"
-                  src="./img/Yoso-Logo-Large-Text-White-Tag-Shadow.svg"
-                />
-              </Col>
               <Col s={12} className="center-align white-text name-header">
                 <h4>
                   GET YOUR SHIT TOGETHER, {context.user.first.toUpperCase()}!
@@ -26,7 +21,7 @@ const Home = () => {
               </Col>
             </Row>
             <br />
-            <Row className="btn-row">
+            <Row>
               <Col s={6} m={4} l={2}>
                 <Link to="/lists">
                   <Button
@@ -89,6 +84,7 @@ const Home = () => {
                 </Button>
               </Col>
             </Row>
+            <BottomSpacer/>
           </Container>
         );
       }}
