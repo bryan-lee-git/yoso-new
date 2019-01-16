@@ -10,17 +10,30 @@ body {
   font-family: "Work Sans", sans-serif;
 }
 
-.input-field {
-  margin-top: 0;
+.back-btn, #save-list, .add-item-btn, .done-btn {
+  width: 100%;
 }
 
-.back-btn, #save-list {
-  width: 100%;
+h4 {
+  text-transform: uppercase;
+}
+
+.strikethrough {
+  text-decoration: line-through;
+  opacity: 0.2;
+}
+
+.add-item-btn {
+  margin-top: 20px;
 }
 
 .card-header-text {
   font-weight: 900;
   color: #00bf0d !important;
+}
+
+.list-btn {
+  width: 100%;
 }
 
 #main-nav {
@@ -176,6 +189,10 @@ footer.page-footer {
 .recipe-btn {
   width: 100%;
   min-height: 50px;
+}
+
+.collapsible-header {
+  border-radius: 10px;
 }
 
 #new-list-btn {

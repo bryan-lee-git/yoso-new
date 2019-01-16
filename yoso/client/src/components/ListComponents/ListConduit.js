@@ -3,6 +3,7 @@ import { Container, Row } from "react-materialize";
 import ListSwitch from "./ListSwitch";
 import NewList from "./NewList";
 import UserLists from "./UserLists";
+import ShoppingList from "./ShoppingList";
 import ListAPI from "../../utilities/ListAPI";
 import BottomSpacer from "../BottomSpacer";
 
@@ -29,6 +30,13 @@ export default class ListConduit extends Component {
     });
   };
 
+  setShoppingList = (id, view) => {
+    this.setState({
+      shoppingList: id,
+      view: view
+    })
+  }
+
   handleSwitch = (e, view) => {
     console.log(`here at handleswitch inside lists `);
     e.preventDefault();
@@ -45,14 +53,29 @@ export default class ListConduit extends Component {
       <Container>
         <Row>
           {view === 0 ? (
-            <ListSwitch context={this.state} handleSwitch={this.handleSwitch} />
-          ) : view === 1 ? (
-            <NewList context={this.state} handleSwitch={this.handleSwitch} />
-          ) : (
-            <UserLists
+            <ListSwitch
               context={this.state}
               handleSwitch={this.handleSwitch}
+            />
+          ) : view === 1 ? (
+            <NewList
+              context={this.state}
+              handleSwitch={this.handleSwitch}
+            />
+          ) : view === 2 ? (
+            <UserLists
+              user={this.props.user}
+              context={this.state}
+              setShoppingList={this.setShoppingList}
+              handleSwitch={this.handleSwitch}
               getLists={this.getLists}
+            />
+          ) : (
+            <ShoppingList 
+              user={this.props.user}
+              context={this.state}
+              handleSwitch={this.handleSwitch}
+              list={this.state.shoppingList}
             />
           )}
         </Row>

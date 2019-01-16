@@ -96,13 +96,14 @@ export default class NewList extends Component {
         <Row>
           <Col s={12} l={4}>
             <Card className="z-depth-5 animate-up list-card rounded">
-              <Input
-                s={12}
-                placeholder="Enter list name here"
-                label="List Name"
-                name="listName"
-                onChange={this.handleChange}
-              />
+              <Row>
+                <Input
+                  s={12}
+                  placeholder="Enter list name here"
+                  name="listName"
+                  onChange={this.handleChange}
+                />
+              </Row>
             </Card>
           </Col>
           <Col s={12} l={8}>
@@ -110,41 +111,41 @@ export default class NewList extends Component {
               id="new-item-input"
               className="z-depth-5 animate-up-2 list-card rounded"
             >
-              <Autocomplete
-                s={4}
-                l={3}
-                data={this.state.terms}
-                placeholder="Name"
-                onAutocomplete={
-                  this.handleAutocomplete //label="New Item"
-                }
-                name="name"
-                onChange={this.handleChange}
-              />
-              <Input
-                s={4}
-                l={3}
-                placeholder="Unit Size"
-                label="Unit Size"
-                name="unitSize"
-                onChange={this.handleChange}
-              />
-              <Input
-                s={4}
-                l={3}
-                placeholder="Quantity"
-                label="Quantity"
-                name="quantity"
-                onChange={this.handleChange}
-              />
-              <Button
-                s={12}
-                l={3}
-                className="btn btn-large"
-                onClick={this.handleNewItem}
-              >
-                Add Item
-              </Button>
+              <Row>
+                <Autocomplete
+                  s={4}
+                  l={3}
+                  data={this.state.terms}
+                  placeholder="Name"
+                  onAutocomplete={
+                    this.handleAutocomplete //label="New Item"
+                  }
+                  name="name"
+                  onChange={this.handleChange}
+                />
+                <Input
+                  s={4}
+                  l={3}
+                  placeholder="Unit Size"
+                  name="unitSize"
+                  onChange={this.handleChange}
+                />
+                <Input
+                  s={4}
+                  l={3}
+                  placeholder="Quantity"
+                  name="quantity"
+                  onChange={this.handleChange}
+                />
+                <Col s={12} l={3}>
+                  <Button
+                    className="btn btn-large add-item-btn"
+                    onClick={this.handleNewItem}
+                  >
+                    Add
+                  </Button>
+                </Col>
+              </Row>
             </Card>
           </Col>
           <Col s={12}>
