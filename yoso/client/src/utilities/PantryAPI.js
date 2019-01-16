@@ -2,10 +2,10 @@ import axios from "axios";
 
 export default {
   //Get all Pantry items.
-  getPantry: function(UserId) {
-    return axios.post({
-      url: `/api/pantry/all`,
-      data: UserId
+  getPantry: function(UserId, sort) {
+    return axios.post(`/api/pantry/all`, {
+      UserId: UserId,
+      sort: sort
     });
   },
   // Get a specific Pantry item.
@@ -22,6 +22,7 @@ export default {
       data: data
     });
   },
+
   // Create a new Pantry Item.
   findOrCreatePantryItem: function(data) {
     return axios({
@@ -31,8 +32,15 @@ export default {
     });
   },
   // Edit a specific Pantry item.
-  updatePantryItem: function(id) {
-    return axios.put(`/api/pantry/${id}`);
+  updatePantryItem: function(id, data) {
+    console.log(
+      `inside update pantry item, here's the incoming data: id: ${id} and data: `,
+      data
+    );
+    return axios.put({
+      url: `/api/pantry/${id}`,
+      data: data
+    });
   },
   // Delete a specific Pantry item.
   deletePantryItem: function(id) {

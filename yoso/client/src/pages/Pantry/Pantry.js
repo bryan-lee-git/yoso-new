@@ -1,26 +1,13 @@
-import React, { Component } from "react";
-import PantryItem from "../../components/PantryItem";
-import { Container, Row, Col } from "react-materialize";
+import React from "react";
 
-import BackBtn from "../../components/BackBtn";
-
-class Pantry extends Component {
-  render() {
-    return (
-      <Container className="center-align">
-        <br />
-        <Row>
-          <Col s={12}>
-            <h1 className="white-text fade-in">IN THE PANTRY</h1>
-          </Col>
-        </Row>
-        <BackBtn goto="home" />
-        <div className="animate-up">
-          <PantryItem />
-        </div>
-      </Container>
-    );
-  }
-}
+import { UserContext } from "../../App";
+import PantryParent from "../../components/PantryComponents/PantryParent";
+const Pantry = () => (
+  <UserContext.Consumer>
+    {context => {
+      return <PantryParent user={context} />;
+    }}
+  </UserContext.Consumer>
+);
 
 export default Pantry;

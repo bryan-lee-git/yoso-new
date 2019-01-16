@@ -8,7 +8,15 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     unitSize: {
+      type: DataTypes.FLOAT,
+      allowNull: true
+    },
+    weightMeasure: {
       type: DataTypes.STRING,
+      allowNull: true
+    },
+    sizeQuantity: {
+      type: DataTypes.INTEGER,
       allowNull: true
     },
     quantity: {
