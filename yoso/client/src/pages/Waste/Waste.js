@@ -6,7 +6,6 @@ import BackBtn from "../../components/BackBtn";
 import { UserContext } from "../../App";
 
 class Waste extends Component {
-
   render() {
     return (
       <UserContext.Consumer>
@@ -20,7 +19,7 @@ class Waste extends Component {
                   <PageHeader>WASTE LESS!</PageHeader>
                 </Col>
               </Row>
-              <BackBtn goto="/home"/>
+              <BackBtn goto="/home" />
               <WasteItem context={userContext} />
             </Container>
           );

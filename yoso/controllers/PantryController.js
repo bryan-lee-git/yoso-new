@@ -2,21 +2,29 @@ const db = require("../models");
 
 // Defining methods for the PantryController
 module.exports = {
+  /////////
+  // Called by pantry.js matching "/api/pantry/all Method: POST"
+  /////////
+
   findAll: function(req, res) {
-    console.log(`\ninside findall of pantry, here's the req.body: `, req.body);
+    console.log(
+      `\ninside findall of pantry, here's the req.body: `,
+      req.body.UserId
+    );
     db.Pantry.findAll({
       where: {
         UserId: req.body.UserId
-      }
+      },
+      order: [[req.body.sort, "ASC"]]
     })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  findById: function(req, res) {
-    db.Pantry.findById(req.params.id)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
-  },
+
+  /////////
+  // Called by pantry.js matching "/api/pantry/name Method: POST"
+  /////////
+
   findOne: function(req, res) {
     console.log(`\n\n Inside pantry findone, here's req.body: `, req.body);
     db.Pantry.findOne({
@@ -28,8 +36,21 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+
+  /////////
+  // Called by pantry.js matching "/api/pantry/:id Method: POST"
+  /////////
+
   findOrCreate: function(req, res) {
-    const { name, shelfLife, frequency, stock, UserId, description } = req.body;
+    const {
+      name,
+      shelfLife,
+      frequency,
+      stock,
+      UserId,
+      description,
+      category
+    } = req.body;
     console.log(
       `\n\ninside find or create of pantry, here's the req.body.UserId: `,
       UserId
@@ -44,27 +65,45 @@ module.exports = {
         shelfLife: shelfLife,
         frequency: frequency,
         stock: stock,
-        description: description
+        description: description,
+        category: category
       }
     })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+
+  /////////
+  // Called by pantry.js matching "/api/pantry/:id Method: PUT"
+  /////////
+
   update: function(req, res) {
-    db.Pantry.findOneAndUpdate(
-      {
-        _id: req.params.id
-      },
+    console.log(
+      `inside update method of pantry controller, here's the incoming data: req.params: ${
+        req.params
+      } and req.body: `,
       req.body
-    )
+    );
+
+    db.Pantry.update(req.body, { where: { id: req.params } })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+
+  /////////
+  // Called by pantry.js matching "/api/pantry/:id Method: DELETE"
+  /////////
+
   remove: function(req, res) {
-    db.Pantry.findById({
-      _id: req.params.id
+    console.log(
+      `\nInside pantrycontroller, remove method, here's req.params: `,
+      req.params.id
+    );
+    db.Pantry.destroy({
+      where: {
+        id: req.params.id
+      }
     })
-      .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   }

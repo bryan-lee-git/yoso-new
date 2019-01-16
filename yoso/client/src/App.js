@@ -207,7 +207,6 @@ class App extends Component {
               />
               <Route exact path="/about" component={About} />
               <PrivateRoute exact path="/home" component={Home} />
-
               <PrivateRoute exact path="/lists" component={Lists} />
               <PrivateRoute exact path="/pantry" component={Pantry} />
               <PrivateRoute exact path="/recipes" component={RecipeContain} />

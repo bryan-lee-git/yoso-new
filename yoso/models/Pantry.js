@@ -28,9 +28,9 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER
     },
     category: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       validate: {
-        len: [1, 30]
+        len: [1, 50]
       }
     },
     photo: {

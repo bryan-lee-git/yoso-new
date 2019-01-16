@@ -2,8 +2,8 @@ import axios from "axios";
 
 export default {
   //Get all Purchases for a User.
-  getPurchases: function() {
-    return axios.get(`/api/purchases`);
+  getPurchases: function(id) {
+    return axios.post(`/api/purchases/all`, { id: id });
   },
   // Get a specific User purchase.
   getPurchase: function(id) {
