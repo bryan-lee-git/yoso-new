@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Redirect } from "react-router-dom"
 import { Container, Row, Col, Input, Icon, Card } from 'react-materialize';
+import PageHeader from "../../components/PageHeader";
+import BottomSpacer from "../../components/BottomSpacer";
 
 class SignUp extends Component {
 
@@ -39,10 +41,10 @@ class SignUp extends Component {
       <br/>
         <Row>
           <Col s={12}>
-            <h1 className="white-text fade-in">NEW ACCOUNT</h1>
+            <PageHeader>NEW ACCOUNT</PageHeader>
           </Col>
         </Row>
-        <form className="btn-row">
+        <form>
           <Card id="signup-form" className="rounded animate-up z-depth-4">
             <Row>
               <Col s={12}>
@@ -74,6 +76,7 @@ class SignUp extends Component {
             </Row>
           </Card>  
         </form>
+        <BottomSpacer/>
       </Container>
     );
   }

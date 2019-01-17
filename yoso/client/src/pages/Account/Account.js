@@ -10,6 +10,8 @@ import {
 } from "react-materialize";
 import BackBtn from '../../components/BackBtn';
 import { UserContext } from "../../App";
+import PageHeader from "../../components/PageHeader";
+import BottomSpacer from "../../components/BottomSpacer";
 
 class Account extends Component {
   state = {};
@@ -35,11 +37,8 @@ class Account extends Component {
         {context => {
           return (
             <Container className="center-align">
-              <br />
+              <PageHeader>YOUR INFO</PageHeader>
               <Row>
-                <Col s={12}>
-                  <h1 className="white-text fade-in">YOUR ACCOUNT INFO</h1>
-                </Col>
                 <Col s={12}>
                 <BackBtn
                   goto="/Home"
@@ -190,6 +189,7 @@ class Account extends Component {
                   </Row>
                 </Card>
               </form>
+              <BottomSpacer/>
             </Container>
           );
         }}

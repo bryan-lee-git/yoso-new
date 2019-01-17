@@ -14,10 +14,9 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findById: function(req, res) {
-    db.List.findById({
+    db.List.findOne({
       where: {
-        userId: req.body.userId,
-        id: req.params.listId
+        id: req.params.id
       }
     })
       .then(dbModel => res.json(dbModel))
