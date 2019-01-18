@@ -5,7 +5,8 @@ module.exports = {
   findAll: function(req, res) {
     console.log(`\nInside findAll of purchases, here's req.body: `, req.body);
     db.Purchases.findAll({
-      where: { pantryId: req.body.id }
+      where: { pantryId: req.body.id },
+      order: [["createdAt", "DESC"]]
     })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
