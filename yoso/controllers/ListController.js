@@ -23,12 +23,16 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
+    console.log(req.body)
     db.List.create({
       UserId: req.body.UserId,
       name: req.body.name
     })
       .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+      .catch(err => {
+        console.log(err);
+        res.status(422).json(err)
+      });
   },
 
   createListWithItems: function(req, res) {
