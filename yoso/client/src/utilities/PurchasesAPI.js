@@ -11,14 +11,14 @@ export default {
   },
   // Create a new purchase.
   createPurchase: function(data) {
-    return axios.post(`/api/purchase`, { data: data });
+    return axios.post(`/api/purchases`, data);
   },
   // Edit a specific purchase.
   updatePurchase: function(id) {
-    return axios.put(`/api/purchase/${id}`);
+    return axios.put(`/api/purchases/${id}`);
   },
   // Delete a specific purchase.
   deletePurchase: function(id) {
-    return axios.delete(`/api/purchase/${id}`);
+    return axios.delete(`/api/purchases/${id}`);
   }
 };

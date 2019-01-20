@@ -38,7 +38,6 @@ export default class ListConduit extends Component {
   }
 
   handleSwitch = (e, view) => {
-    console.log(`here at handleswitch inside lists `);
     e.preventDefault();
     this.setState({
       view: view
