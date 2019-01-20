@@ -9,10 +9,7 @@ module.exports = {
         }
       })
       .then(dbModel => res.json(dbModel))
-      .catch(err => {
-        console.log(err);
-        res.status(422).json(err);
-      });
+      .catch(err => res.status(422).json(err));
   },
   findById: function (req, res) {
     db.ListItems.findById(req.params.id)
@@ -20,13 +17,9 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   create: function (req, res) {
-    console.log(req.body)
     db.ListItems.create(req.body)
       .then(dbModel => res.json(dbModel))
-      .catch(err => {
-        console.log(err);
-        res.status(422).json(err)
-      });
+      .catch(err => res.status(422).json(err));
   },
   bulkCreate: function (req, res) {
     db.ListItems.bulkCreate(req.body.data, {

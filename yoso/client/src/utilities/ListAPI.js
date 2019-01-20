@@ -3,9 +3,6 @@ import axios from "axios";
 export default {
   //Get all User Lists items.
   getLists: function(userId) {
-    console.log(
-      `from inside the getlists method of the list api the user id is ${userId}`
-    );
     return axios.post(`/api/list/findAll`, {
       userId
     });

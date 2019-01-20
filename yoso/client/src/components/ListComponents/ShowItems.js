@@ -19,8 +19,6 @@ class ShowItems extends Component {
   }
 
   render() {
-    //console.log(`inside show items, here's this: `, this);
-    //console.log(`inside show items, here's the props: `, this.props);
     return (
       <div>
         <Row>
@@ -29,7 +27,7 @@ class ShowItems extends Component {
               <Row>
                 <h2>{this.props.name}</h2>
                 {this.state.items.length > 0 ? (
-                  <Table className="striped highlight centered">
+                  <Table className="striped highlight centered responsive-table">
                     <thead>
                       <tr>
                         <th>Name</th>
