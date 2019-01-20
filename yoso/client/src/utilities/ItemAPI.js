@@ -45,9 +45,6 @@ export default {
   },
   // Delete a specific item on a list.
   deleteItem: function(listId, id) {
-    console.log(
-      `inside deleteitem method of listitem, here's the incoming arguments: listId: ${listId}; id: ${id}`
-    );
     return axios({
       method: `delete`,
       url: `/api/listitem/${id}`,

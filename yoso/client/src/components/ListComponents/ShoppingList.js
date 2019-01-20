@@ -12,7 +12,8 @@ import {
   Table,
   Button,
   Input,
-  Icon
+  Icon,
+  Modal
 } from "react-materialize";
 
 export default class ShoppingList extends Component {
@@ -58,7 +59,7 @@ export default class ShoppingList extends Component {
     this.setState({items: items, cart: cart});
   };
 
-  addAndSave = userId => {
+  endShopping = (e, userId) => {
     this.state.cart.forEach((item, index) => {
       const pantryItem = {
         name: item.name,
@@ -66,7 +67,6 @@ export default class ShoppingList extends Component {
         UserId: userId
       }
       PantryAPI.findOrCreatePantryItem(pantryItem).then(res => {
-        console.log(res.data);
         const purchasedItem = {
           unitSize: item.unitSize,
           measurement: item.measurement,
@@ -77,21 +77,17 @@ export default class ShoppingList extends Component {
           ordinal: (index + 1),
           PantryId: res.data[0].id
         }
-        PurchasesAPI.createPurchase(purchasedItem).then(res => {
-          console.log(res.data);
+        PurchasesAPI.createPurchase(purchasedItem).then(() => {
+          this.props.handleSwitch(e, 2);
         });
       })
     })
   }
 
-  addAndDelete = () => {
-
+  endAndDelete = (e, userId, listId) => {
+    ListAPI.deleteList(userId, listId);
+    this.endShopping(e, userId);
   }
-
-  deleteList = (e, userId, listId, cb) => {
-    e.preventDefault();
-    ListAPI.deleteList(userId, listId).then(() => cb(userId));
-  };
 
   componentDidMount = () => {
     this.getItems(this.props.list);
@@ -115,7 +111,7 @@ export default class ShoppingList extends Component {
           />
           <Row>
             {this.state.items ? (
-              <Table className="striped highlight centered">
+              <Table className="striped highlight centered responsive-table">
                 <thead>
                   <tr>
                     <th>Purchase</th>
@@ -168,7 +164,23 @@ export default class ShoppingList extends Component {
         </Card>
         <Row>
           <Col s={12}>
-            <Button onClick={() => this.addAndSave(this.props.user.id)} className="btn-large end-shop-btn">SAVE + EXIT</Button>
+          <Modal trigger={
+            <Button className="btn-large animate-up-3 end-shop-btn">DONE SHOPPING</Button>
+          }>
+          <Row className="center-align">
+            <Col>
+              <h4>NICE JOB! NOW CHOOSE AN OPTION BELOW.</h4>
+            </Col>
+          </Row>
+          <Row>
+            <Col s={6}>
+              <Button onClick={e => this.endShopping(e, this.props.user.id)} className="btn-large end-shop-btn">END + SAVE</Button>
+            </Col>
+            <Col s={6}>
+              <Button onClick={e => this.endAndDelete(e, this.props.user.id, this.props.list)} className="btn-large end-shop-btn">END + DELETE</Button>
+            </Col>
+          </Row>
+          </Modal>
           </Col>
         </Row>
       </div>

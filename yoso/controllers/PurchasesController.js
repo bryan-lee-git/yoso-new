@@ -3,7 +3,6 @@ const db = require("../models");
 // Defining methods for the PurchasessController
 module.exports = {
   findAll: function(req, res) {
-    console.log(`\nInside findAll of purchases, here's req.body: `, req.body);
     db.Purchases.findAll({
       where: { pantryId: req.body.id },
       order: [["createdAt", "DESC"]]

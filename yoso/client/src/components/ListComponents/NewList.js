@@ -74,11 +74,10 @@ export default class NewList extends Component {
           quantity: item.quantity,
           notes: item.notes,
           listId: response.data.id
-        }).then(res => {
-          console.log(res.data);
+        }).then(() => {
+          this.props.handleSwitch(e, 2);
         });
       });
-      this.props.handleSwitch(e, 2);
     });
   };
 
@@ -175,7 +174,7 @@ export default class NewList extends Component {
               <Row>
                 <h2>{this.state.items.name}</h2>
                 {this.state.items.length > 0 ? (
-                  <Table className="striped highlight centered">
+                  <Table className="striped highlight centered responsive-table">
                     <thead>
                       <tr>
                         <th>Name</th>

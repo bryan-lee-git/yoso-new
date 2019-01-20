@@ -15,7 +15,7 @@ body {
   border-radius: 10px;
 }
 
-.back-btn, #save-list, .add-item-btn, .done-btn, .btn.modal-close, .end-shop-btn {
+.back-btn, #save-list, .add-item-btn, .done-btn, .btn.modal-close, .end-shop-btn, .build-pantry-btn, .search-btn {
   width: 100%;
 }
 
@@ -28,7 +28,7 @@ h4 {
   opacity: 0.2;
 }
 
-.add-item-btn {
+.add-item-btn, .search-btn {
   margin-top: 20px;
 }
 

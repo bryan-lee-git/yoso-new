@@ -15,13 +15,11 @@ export default class ListConduit extends Component {
   };
 
   componentDidMount() {
-    console.log(`inside the conduit, here's props: `, this.props);
     this.getLists(this.props.user.id);
   }
 
   getLists = id => {
     ListAPI.getLists(id).then(res => {
-      console.log(`From getlists at listconduit, here's the user's lists: `, res);
       this.setState({
         lists: res.data,
         id: this.props.user.id,
@@ -46,8 +44,6 @@ export default class ListConduit extends Component {
 
   render() {
     const { view } = this.state;
-    console.log(`inside listconduit, we fired off render! Here's ${view}`);
-
     return (
       <Container>
         <Row>

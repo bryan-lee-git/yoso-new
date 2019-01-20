@@ -165,15 +165,15 @@ class WasteItem extends Component {
       <React.Fragment>
         <Row>
           <Col s={4} offset="3">
-            <Card className="z-depth-3">
+            <Card className="z-depth-3 rounded">
               <h4>{user.first.toUpperCase()}'S WASTE</h4>
             </Card>
-            <Card>
+            <Card className="z-depth-3 rounded">
               <h5>ITEMS</h5>
             </Card>
           </Col>
           <Col s={8}>
-            <Card className="z-depth-3">
+            <Card className="z-depth-3 rounded">
               <h4>WASTE SIMULATOR</h4>
               <h5>
                 <Moment format="MM-DD-YYYY">{date}</Moment>
@@ -193,8 +193,8 @@ class WasteItem extends Component {
                 getPantry={this.getPantry}
               />
             ) : (
-              <Button className="btn" onClick={this.launchBuildPantry}>
-                CLICK HERE TO BUILD YOUR PANTRY
+              <Button className="btn build-pantry-btn" onClick={this.launchBuildPantry}>
+                BUILD YOUR PANTRY
               </Button>
             )}
           </Col>
