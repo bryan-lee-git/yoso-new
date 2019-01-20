@@ -16,6 +16,8 @@ import RecipeContain from "./pages/RecipeContain";
 import Waste from "./pages/Waste";
 import About from "./pages/About";
 import Account from "./pages/Account";
+import Tech from "./pages/Tech";
+import TandC from "./pages/TandC";
 import axios from "axios";
 import "./Yoso.css";
 export const UserContext = React.createContext({});
@@ -112,7 +114,6 @@ class App extends Component {
                 id: response.data.id,
                 loggedIn: true
               });
-
               if (cb) cb();
             } else console.log("Incorrect Log-In Attempt. Please Try Again.");
           });
@@ -152,7 +153,6 @@ class App extends Component {
             zip,
             loggedIn: true
           });
-
           if (cb) cb();
         } else console.log("Could not sign up! Please try again.");
       })
@@ -179,66 +179,63 @@ class App extends Component {
             logOut: this.handleLogOut
           }}
         >
-          <div>
-            <header>
-              <Nav
-                className="main-nav"
-                loggedIn={this.state.loggedIn}
-                logOut={this.handleLogOut}
-              />
-            </header>
-            <main>
-              <Route exact path="/" component={Landing} />
-              <Route
-                exact
-                path="/signin"
-                render={() => {
-                  return (
-                    <SignIn signUpPath="/signup" signIn={this.handleSignIn} />
-                  );
-                }}
-              />
-              <Route
-                exact
-                path="/signup"
-                render={() => {
-                  return <SignUp signUp={this.handleSignUp} />;
-                }}
-              />
-              <Route exact path="/about" component={About} />
-              <PrivateRoute exact path="/home" component={Home} />
-              <PrivateRoute exact path="/lists" component={Lists} />
-              <PrivateRoute exact path="/pantry" component={Pantry} />
-              <PrivateRoute exact path="/recipes" component={RecipeContain} />
-              <PrivateRoute exact path="/waste" component={Waste} />
-              <PrivateRoute exact path="/account" component={Account} />
-            </main>
-            <footer className="page-footer">
-              <div className="container" />
-              <div className="footer-copyright">
-                <div className="container hide-on-med-and-down">
-                  <span>COPYRIGHT 2018 © PANDA WARRIORS DG</span>
-                  <span className="right">
-                    <Link className="footer-link" to="/about">
-                      ABOUT
-                    </Link>{" "}
-                    |{" "}
-                    <Link className="footer-link" to="/tech">
-                      TECH
-                    </Link>{" "}
-                    |{" "}
-                    <Link className="footer-link" to="/contact">
-                      CONTACT
-                    </Link>{" "}
-                    |{" "}
-                    <Link className="footer-link" to="/tandc">
-                      TERMS AND CONDITIONS
-                    </Link>
-                  </span>
-                </div>
+          <header>
+            <Nav
+              className="main-nav"
+              loggedIn={this.state.loggedIn}
+              logOut={this.handleLogOut}
+            />
+          </header>
+          <main>
+            <Route exact path="/" component={Landing} />
+            <Route exact path="/tech" component={Tech} />
+            <Route exact path="/tandc" component={TandC} />
+            <Route exact path="/about" component={About} />
+            <Route
+              exact
+              path="/signin"
+              render={() => {
+                return (
+                  <SignIn signUpPath="/signup" signIn={this.handleSignIn} />
+                );
+              }}
+            />
+            <Route
+              exact
+              path="/signup"
+              render={() => {
+                return <SignUp signUp={this.handleSignUp} />;
+              }}
+            />
+            {/* Logged-In Routes */}
+            <PrivateRoute exact path="/home" component={Home} />
+            <PrivateRoute exact path="/lists" component={Lists} />
+            <PrivateRoute exact path="/pantry" component={Pantry} />
+            <PrivateRoute exact path="/recipes" component={RecipeContain} />
+            <PrivateRoute exact path="/waste" component={Waste} />
+            <PrivateRoute exact path="/account" component={Account} />
+          </main>
+          <footer className="page-footer">
+            <div className="container" />
+            <div className="footer-copyright">
+              <div className="container hide-on-med-and-down">
+                <span>COPYRIGHT 2018 © PANDA WARRIORS DG</span>
+                <span className="right">
+                  <Link className="footer-link" to="/about">
+                    ABOUT
+                  </Link>{" "}
+                  |{" "}
+                  <Link className="footer-link" to="/tech">
+                    TECH
+                  </Link>{" "}
+                  |{" "}
+                  <Link className="footer-link" to="/tandc">
+                    TERMS AND CONDITIONS
+                  </Link>
+                </span>
               </div>
-            </footer>
-          </div>
+            </div>
+          </footer>
         </UserContext.Provider>
       </Router>
     );

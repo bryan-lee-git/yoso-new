@@ -126,8 +126,8 @@ export default class ShoppingList extends Component {
                 </thead>
                 <tbody>
                   {this.state.items.map((item, index) => (
-                    <tr className={item.purchased ? "strikethrough" : ""}>
-                      <td onClick={() => this.toggleCartItems(index)} key={index}><Icon>check_circle</Icon></td>
+                    <tr key={index} className={item.purchased ? "strikethrough" : ""}>
+                      <td onClick={() => this.toggleCartItems(index)}><Icon>check_circle</Icon></td>
                       <td>{item.name}</td>
                       <td>{item.unitSize}</td>
                       <td>{item.measurement}</td>
@@ -167,9 +167,9 @@ export default class ShoppingList extends Component {
           <Modal trigger={
             <Button className="btn-large animate-up-3 end-shop-btn">DONE SHOPPING</Button>
           }>
-          <Row className="center-align">
-            <Col>
-              <h4>NICE JOB! NOW CHOOSE AN OPTION BELOW.</h4>
+          <Row>
+            <Col s={12}>
+              <h4 className="center-align">NICE JOB! NOW CHOOSE AN OPTION BELOW.</h4>
             </Col>
           </Row>
           <Row>
