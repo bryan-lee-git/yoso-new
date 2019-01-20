@@ -22,7 +22,6 @@ export default class NewList extends Component {
   state = { items: [], terms: terms, redirect: false };
 
   handleChange = e => {
-    e.preventDefault();
     const { name, value } = e.target;
     if (value) {
       const capName = value.replace(
@@ -54,8 +53,8 @@ export default class NewList extends Component {
     this.setState({ items: newItems });
   };
 
-  handleRemoveItem = event => {
-    const index = event.target.dataset.index;
+  handleRemoveItem = e => {
+    const index = e.target.dataset.index;
     const newItems = this.state.items;
     newItems.splice(index, 1);
     this.setState({ items: newItems });
@@ -74,21 +73,14 @@ export default class NewList extends Component {
           quantity: item.quantity,
           notes: item.notes,
           listId: response.data.id
-        }).then(() => {
+        }).then(e=> {
           this.props.handleSwitch(e, 2);
         });
       });
     });
   };
 
-  handleRedirect = () => {
-    this.setState({ redirect: true });
-  };
-
   render() {
-    if (this.state.redirect) {
-      return <Redirect to={`/lists`} />;
-    }
     return (
       <div className="center-align">
         <Row>
