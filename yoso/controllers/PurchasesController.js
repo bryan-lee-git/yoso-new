@@ -19,7 +19,10 @@ module.exports = {
   create: function(req, res) {
     db.Purchases.create(req.body)
       .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+      .catch(err => {
+        res.json(err);
+        res.status(422).json(err)
+      });
   },
   update: function(req, res) {
     db.Purchases.findOneAndUpdate(

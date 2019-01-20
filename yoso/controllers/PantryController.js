@@ -51,10 +51,6 @@ module.exports = {
       description,
       category
     } = req.body;
-    console.log(
-      `\n\ninside find or create of pantry, here's the req.body.UserId: `,
-      UserId
-    );
     db.Pantry.findOrCreate({
       where: {
         UserId: UserId,
