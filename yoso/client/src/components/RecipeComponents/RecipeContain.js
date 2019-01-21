@@ -1,24 +1,38 @@
 import React, { Component } from "react";
-import Recipe from "../../components/RecipeComponents/Recipe";
+import Recipe from "./Recipe";
 import { Container, Row, Card } from "react-materialize";
 import Yummly from "../../utilities/RecipeAPI";
-import RecipeSearch from "../../components/RecipeComponents/RecipeSearch";
-import BackBtn from "../../components/BackBtn";
-import BottomSpacer from "../../components/BottomSpacer";
-import PageHeader from "../../components/PageHeader";
+import RecipeSearch from "./RecipeSearch";
+import BackBtn from "../BackBtn";
+import BottomSpacer from "../BottomSpacer";
+import PageHeader from "../PageHeader";
+import ListAPI from "../../utilities/ListAPI";
 
 class RecipeContain extends Component {
 
   state = {
     query: "",
     response: "",
-    errMsg: "Search for a recipe!"
+    errMsg: "Search for a recipe!",
+    lists: []
+  };
+
+  componentDidMount() {
+    this.getLists(this.props.user.id);
+  }
+
+  getLists = id => {
+    ListAPI.getLists(id).then(res => {
+      this.setState({ lists: res.data });
+      console.log(this.state.lists);
+    });
   };
 
   findRecipes = () => {
     Yummly.getRecipes(this.state.query)
       .then(res => {
         this.setState({ response: res.data.matches });
+        console.log(this.state.response);
       })
       .catch(err => {
         if (err) {
@@ -32,6 +46,7 @@ class RecipeContain extends Component {
     this.setState({
       [name]: value
     });
+    console.log(this.state);
   };
 
   handleFormSubmit = e => {
@@ -59,6 +74,7 @@ class RecipeContain extends Component {
                 ingredients={recipe.ingredients}
                 img={recipe.smallImageUrls[0]}
                 link={`https://www.yummly.com/recipe/${recipe.id}`}
+                lists={this.state.lists}
               />
             ))}
           </Row>
