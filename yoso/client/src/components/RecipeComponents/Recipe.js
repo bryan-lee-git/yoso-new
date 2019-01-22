@@ -29,13 +29,16 @@ const Recipe = props => {
                                 </ul>
                                 <h4>Add to...</h4>
                                 <Row>
-                                    <Input s={12} type='select' label="Materialize Select" defaultValue='2'>
+                                    <Input s={12} type='select' label="Materialize Select" defaultValue='2' onChange={(event)=>{
+                                        event.preventDefault()
+                                        props.setIngredientsToState(parseInt(event.target.value), props.recipeIndex)
+                                    }}>
                                         {props.lists.map((list) => (
-                                            <option value={list.id}>{list.name}</option>
+                                            <option value={list.id} name={list.name}>{list.name}</option>
                                         ))}
                                     </Input>
                                 </Row>
-                                <Button id="confirm-btn" className="btn">Confirm</Button>
+                                <Button id="confirm-btn" className="btn" onClick={props.addIngredientsToList}>Confirm</Button>
                             </Modal>
                         </Col>
                     </Row>

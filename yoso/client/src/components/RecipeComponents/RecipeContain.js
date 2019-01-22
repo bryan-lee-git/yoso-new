@@ -7,6 +7,7 @@ import BackBtn from "../BackBtn";
 import BottomSpacer from "../BottomSpacer";
 import PageHeader from "../PageHeader";
 import ListAPI from "../../utilities/ListAPI";
+import ItemAPI from "../../utilities/ItemAPI";
 
 class RecipeContain extends Component {
 
@@ -14,7 +15,9 @@ class RecipeContain extends Component {
     query: "",
     response: "",
     errMsg: "Search for a recipe!",
-    lists: []
+    lists: [],
+    selectedListId: "",
+    selectedRecipeIngredients: []
   };
 
   componentDidMount() {
@@ -27,6 +30,33 @@ class RecipeContain extends Component {
       console.log(this.state.lists);
     });
   };
+
+
+
+  setIngredientsToState = (listId, recipeIndex) => {
+
+    var recipeObj = this.state.response.filter((recipe, index) => {
+      return index === recipeIndex;
+    })[0]
+    this.setState({
+      selectedListId: listId,
+      selectedRecipeIngredients: recipeObj.ingredients
+    })
+  }
+
+  addIngredientsToList = () => {
+    const listId = this.state.selectedListId;
+    this.state.selectedRecipeIngredients.forEach((ingredient) => {
+      ItemAPI.createItem({
+        name: ingredient,
+        unitSize: 1,
+        measurement: "Pack",
+        quantity: 1,
+        notes: "",
+        listId: listId 
+      })
+    })
+  }
 
   findRecipes = () => {
     Yummly.getRecipes(this.state.query)
@@ -70,11 +100,14 @@ class RecipeContain extends Component {
             {this.state.response.map((recipe, index) => (
               <Recipe
                 key={index}
+                recipeIndex={index}
                 title={recipe.recipeName}
                 ingredients={recipe.ingredients}
                 img={recipe.smallImageUrls[0]}
                 link={`https://www.yummly.com/recipe/${recipe.id}`}
                 lists={this.state.lists}
+                setIngredientsToState={this.setIngredientsToState}
+                addIngredientsToList={this.addIngredientsToList}
               />
             ))}
           </Row>
