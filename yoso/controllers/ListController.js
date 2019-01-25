@@ -18,6 +18,16 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  findYosoList: function(req, res) {
+    db.List.findAll({
+      where: {
+        UserId: req.params.id,
+        name: "YOSO List"
+      }
+    })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
   create: function(req, res) {
     db.List.create({
       UserId: req.body.UserId,
