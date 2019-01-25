@@ -73,7 +73,7 @@ export default class NewList extends Component {
           quantity: item.quantity,
           notes: item.notes,
           listId: response.data.id
-        }).then(e=> {
+        }).then(() => {
           this.props.handleSwitch(e, 2);
         });
       });

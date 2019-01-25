@@ -22,8 +22,7 @@ import axios from "axios";
 import "./Yoso.css";
 export const UserContext = React.createContext({});
 
-const bcrypt = require("bcryptjs");
-const salt = bcrypt.genSaltSync(10);
+const CryptoJS = require("crypto-js");
 
 const yosoAuth = {
   isAuthenticated: false,
@@ -52,13 +51,13 @@ class App extends Component {
 
   handleSignUp = (data, cb) => {
     const { first, last, email, password, street, city, state, zip } = data;
-    const hash = bcrypt.hashSync(password, salt);
+    const ciphertext = CryptoJS.AES.encrypt(password, 'yosoAuthKeyMofo').toString();
     axios
       .post("/login", {
         first,
         last,
         email,
-        password: hash,
+        password: ciphertext,
         street,
         city,
         state,
@@ -71,7 +70,7 @@ class App extends Component {
             first,
             last,
             email,
-            password: hash,
+            password: ciphertext,
             street,
             city,
             state,
@@ -99,8 +98,9 @@ class App extends Component {
             response.data
           );
           const hash = response.data.password;
-          bcrypt.compare(password, hash).then(res => {
-            if (res === true) {
+          var bytes = CryptoJS.AES.decrypt(hash, 'yosoAuthKeyMofo');
+          var originalText = bytes.toString(CryptoJS.enc.Utf8);
+          if (originalText === password) {
               yosoAuth.authenticate();
               this.setState({
                 first: response.data.first,
@@ -116,7 +116,6 @@ class App extends Component {
               });
               if (cb) cb();
             } else console.log("Incorrect Log-In Attempt. Please Try Again.");
-          });
         } else console.log("Could not sign in! Please try again.");
       })
       .catch(err => {
@@ -127,13 +126,13 @@ class App extends Component {
 
   handleAccountUpdate = (data, cb) => {
     const { first, last, email, password, street, city, state, zip } = data;
-    const hash = bcrypt.hashSync(password, salt);
+    const ciphertext = CryptoJS.AES.encrypt(password, 'yosoAuthKeyMofo').toString();
     axios
       .put(`/login/${email}`, {
         first,
         last,
         email,
-        password: hash,
+        password: ciphertext,
         street,
         city,
         state,
@@ -146,7 +145,7 @@ class App extends Component {
             first,
             last,
             email,
-            password: hash,
+            password: ciphertext,
             street,
             city,
             state,
