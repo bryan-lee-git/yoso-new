@@ -12,7 +12,7 @@ import SignUp from "./pages/SignUp";
 import Home from "./pages/Home";
 import Lists from "./pages/Lists";
 import Pantry from "./pages/Pantry";
-import RecipeContain from "./pages/RecipeContain";
+import RecipePage from "./pages/RecipePage";
 import Waste from "./pages/Waste";
 import About from "./pages/About";
 import Account from "./pages/Account";
@@ -211,7 +211,7 @@ class App extends Component {
             <PrivateRoute exact path="/home" component={Home} />
             <PrivateRoute exact path="/lists" component={Lists} />
             <PrivateRoute exact path="/pantry" component={Pantry} />
-            <PrivateRoute exact path="/recipes" component={RecipeContain} />
+            <PrivateRoute exact path="/recipes" component={RecipePage} />
             <PrivateRoute exact path="/waste" component={Waste} />
             <PrivateRoute exact path="/account" component={Account} />
           </main>
