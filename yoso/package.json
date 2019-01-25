@@ -27,6 +27,7 @@
     "moment": "^2.23.0",
     "mysql2": "^1.6.4",
     "react-moment": "^0.8.4",
-    "sequelize": "^4.42.0"
+    "sequelize": "^4.42.0",
+    "serve": "^10.1.1"
   }
 }
