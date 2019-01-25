@@ -38,7 +38,7 @@ const Recipe = props => {
                                         ))}
                                     </Input>
                                 </Row>
-                                <Button id="confirm-btn" className="btn" onClick={props.addIngredientsToList}>Confirm</Button>
+                                <Button id="confirm-btn" className="btn modal-action modal-close" onClick={props.addIngredientsToList}>Confirm</Button>
                             </Modal>
                         </Col>
                     </Row>
