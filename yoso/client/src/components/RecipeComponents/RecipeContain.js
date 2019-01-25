@@ -50,7 +50,7 @@ class RecipeContain extends Component {
       ItemAPI.createItem({
         name: ingredient,
         unitSize: 1,
-        measurement: "Pack",
+        measurement: "N/A",
         quantity: 1,
         notes: "",
         listId: listId 
