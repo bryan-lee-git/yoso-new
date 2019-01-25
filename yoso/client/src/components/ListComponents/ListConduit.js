@@ -26,7 +26,7 @@ export default class ListConduit extends Component {
 
   getPantry = () => {
     PantryAPI.getPantry(this.props.user.id, "frequency").then(response => {
-      const YOSO = response.data.filter(item => item.stock === "ENOUGH");
+      const YOSO = response.data.filter(item => item.stock !== "ENOUGH");
       if (YOSO.length > 0) this.createList(this.props.user.id, YOSO);
     })
   }
