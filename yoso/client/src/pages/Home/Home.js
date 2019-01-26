@@ -16,7 +16,7 @@ const Home = () => {
             <Row>
               <Col s={12} className="center-align white-text name-header">
                 <h4>
-                  GET YOUR SHIT TOGETHER, {context.user.first.toUpperCase()}!
+                  WELCOME, {context.user.first.toUpperCase()}!
                 </h4>
               </Col>
             </Row>

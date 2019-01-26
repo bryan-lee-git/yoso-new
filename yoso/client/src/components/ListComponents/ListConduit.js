@@ -67,7 +67,6 @@ export default class ListConduit extends Component {
         id: this.props.user.id,
         first: this.props.user.first
       });
-      console.log(this.state.lists);
     });
   };
 

@@ -93,10 +93,6 @@ class App extends Component {
       .get("/login", { email })
       .then(response => {
         if (response.data) {
-          console.log(
-            `here's the response from the db for the user data: `,
-            response.data
-          );
           const hash = response.data.password;
           var bytes = CryptoJS.AES.decrypt(hash, 'yosoAuthKeyMofo');
           var originalText = bytes.toString(CryptoJS.enc.Utf8);

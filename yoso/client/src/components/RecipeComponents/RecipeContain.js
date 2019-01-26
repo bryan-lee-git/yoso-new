@@ -27,7 +27,6 @@ class RecipeContain extends Component {
   getLists = id => {
     ListAPI.getLists(id).then(res => {
       this.setState({ lists: res.data });
-      console.log(this.state.lists);
     });
   };
 
@@ -62,7 +61,6 @@ class RecipeContain extends Component {
     Yummly.getRecipes(this.state.query)
       .then(res => {
         this.setState({ response: res.data.matches });
-        console.log(this.state.response);
       })
       .catch(err => {
         if (err) {
@@ -76,7 +74,6 @@ class RecipeContain extends Component {
     this.setState({
       [name]: value
     });
-    console.log(this.state);
   };
 
   handleFormSubmit = e => {
