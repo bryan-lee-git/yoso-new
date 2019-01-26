@@ -92,7 +92,7 @@ export default class NewList extends Component {
         </Row>
         <BackBtn goto="/lists" handleSwitch={this.props.handleSwitch} page={0}/>
         <Row>
-          <Col s={12} l={12}>
+          <Col s={12} l={2}>
             <Card className="z-depth-5 animate-up list-card rounded">
               <Row>
                 <Input
